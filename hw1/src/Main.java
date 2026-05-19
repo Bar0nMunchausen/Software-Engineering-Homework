@@ -64,7 +64,7 @@ public class Main {
 
         // check if the movie already exists or if the limit has been reached
         if(!movieExist(movieName,directorName)) {
-            if (numberOfMovies < 100) {
+            if (numberOfMovies < MAX_SIZE) {
                 movies[numberOfMovies] = movieName;
                 directors[numberOfMovies] = directorName;
                 ratings[numberOfMovies] = rating;
@@ -80,12 +80,14 @@ public class Main {
         }
     }
     public static boolean movieExist(String movieName,String directorName){
-           for (int i = 0; i < numberOfMovies; i++) {
-               if(movies[i].equals(movieName) && directors[i].equals(directorName)) return true;
-           }
-           return false;
+        // returns true if the movie with the corresponding director exists
+       for (int i = 0; i < numberOfMovies; i++) {
+           if(movies[i].equals(movieName) && directors[i].equals(directorName)) return true;
+       }
+       return false;
     }
     public static void updateMovie(String movieName,double rating) {
+        // updates the existing movie with the new rating
         for (int i = 0; i < numberOfMovies; i++) {
             if(movies[i].equals(movieName)) {
                 ratings[i] = rating;
@@ -94,6 +96,7 @@ public class Main {
 
     }
     public static void displayAll() {
+        // displays all the existing movies with theirs directors and ratings
         if (numberOfMovies == 0) {
             System.out.println("No movies are available");
             return;
@@ -103,7 +106,6 @@ public class Main {
         String[] uniqueSortedDirectors = Arrays.stream(directors)
                 .filter(Objects::nonNull)
                 .distinct()
-                .sorted()
                 .toArray(String[]::new);
         // print movies and rating of each director
         for(String author: uniqueSortedDirectors) {
@@ -115,6 +117,7 @@ public class Main {
         }
     }
     public static void displayRating() {
+        // displays the rating of the entered movie
         System.out.println("Enter movie name:");
         String movieName = scanner.nextLine();
 
@@ -128,8 +131,10 @@ public class Main {
 
     }
     public static void findBest() {
+        // find the director with the best average rating
         if (numberOfMovies == 0){
             System.out.println("No movies are available.");
+            return;
         }
         // copied the array so the changes won't affect the initial data
         String[] copyDirectors = new String[numberOfMovies];
@@ -169,6 +174,7 @@ public class Main {
 
 
     public static void exit(){
+        // prints the exit message
         System.out.println("Exiting the program. Goodbye!");
     }
     public static void main(String[] args) throws IOException {

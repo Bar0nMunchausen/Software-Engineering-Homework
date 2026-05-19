@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -88,7 +89,8 @@ public class Main {
             return;
         }
         if(authors == null) return;
-        String[] uniqueSortedAuthors = Arrays.stream(authors.clone())
+        String[] uniqueSortedAuthors = Arrays.stream(authors)
+                .filter(Objects::nonNull) // <--- מסנן החוצה את כל איברי ה-null
                 .distinct()
                 .sorted()
                 .toArray(String[]::new);

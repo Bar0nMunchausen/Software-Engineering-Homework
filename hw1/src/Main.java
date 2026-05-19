@@ -8,17 +8,20 @@ public class Main {
     public static Scanner scanner; // Note: Do not change this line.
     public static int MAX_SIZE = 100;
     public static String[] movies;
-    public static String[] authors;
+    public static String[] directors;
     public static double[] ratings;
     public static int numberOfMovies = 0;
     public static void manageMovies() {
+        // core movie management function
         String choice;
         movies = new String[MAX_SIZE];
-        authors = new String[MAX_SIZE];
+        directors = new String[MAX_SIZE];
         ratings = new double[MAX_SIZE];
         numberOfMovies = 0;
+
         System.out.println("Welcome to the Movies Management System!.");
-        // add comments here!! + refactor names !!
+
+        // main routing loop
         while (true) {
             System.out.println("""
                 1. Add a new movie
@@ -45,6 +48,7 @@ public class Main {
         }
     }
     public static void addMovie(Scanner scanner) {
+        // adds a movie to the first empty array index
         System.out.println("Enter movie name:");
         String movieName = scanner.nextLine();
 
@@ -58,10 +62,11 @@ public class Main {
         System.out.println("Enter director name:");
         String directorName = scanner.nextLine();
 
+        // check if the movie already exists or if the limit has been reached
         if(!movieExist(movieName,directorName)) {
             if (numberOfMovies < 100) {
                 movies[numberOfMovies] = movieName;
-                authors[numberOfMovies] = directorName;
+                directors[numberOfMovies] = directorName;
                 ratings[numberOfMovies] = rating;
                 numberOfMovies++;
                 System.out.println("Movie " + movieName + " added successfully!");
@@ -76,7 +81,7 @@ public class Main {
     }
     public static boolean movieExist(String movieName,String directorName){
            for (int i = 0; i < numberOfMovies; i++) {
-               if(movies[i].equals(movieName) && authors[i].equals(directorName)) return true;
+               if(movies[i].equals(movieName) && directors[i].equals(directorName)) return true;
            }
            return false;
     }
@@ -93,17 +98,19 @@ public class Main {
             System.out.println("No movies are available");
             return;
         }
-        if(authors == null) return;
-        String[] uniqueSortedAuthors = Arrays.stream(authors)
-                .filter(Objects::nonNull) // <--- מסנן החוצה את כל איברי ה-null
+        if(directors == null) return;
+        // sort the directors in lexicographical ascending order
+        String[] uniqueSortedDirectors = Arrays.stream(directors)
+                .filter(Objects::nonNull)
                 .distinct()
                 .sorted()
                 .toArray(String[]::new);
-        for(String author: uniqueSortedAuthors) {
+        // print movies and rating of each director
+        for(String author: uniqueSortedDirectors) {
             for (int i = 0; i < numberOfMovies; i++) {
-                if(!authors[i].equals(author)) continue;
+                if(!directors[i].equals(author)) continue;
                 System.out.println("Name: " + movies[i] + " rating: " + ratings[i] +
-                        " director: " + authors[i]);
+                        " director: " + directors[i]);
             }
         }
     }
@@ -124,8 +131,9 @@ public class Main {
         if (numberOfMovies == 0){
             System.out.println("No movies are available.");
         }
-        String[] copyAuthors = new String[numberOfMovies];
-        System.arraycopy(authors, 0, copyAuthors, 0, numberOfMovies);
+        // copied the array so the changes won't affect the initial data
+        String[] copyDirectors = new String[numberOfMovies];
+        System.arraycopy(directors, 0, copyDirectors, 0, numberOfMovies);
 
         String currAuthor = "";
         String bestAuthor = "";
@@ -134,16 +142,19 @@ public class Main {
         int countMovies = 0;
         double avg = 0.0;
 
+        // go over each director until the end, increasing the sum and count
+        // make the "visited" directors empty, to skip unnecessary loops
         for (int i = 0; i < numberOfMovies; i++){
-            if (copyAuthors[i].isEmpty()) continue;
-            currAuthor = copyAuthors[i];
+            if (copyDirectors[i].isEmpty()) continue;
+            currAuthor = copyDirectors[i];
             for (int j = i; j < numberOfMovies; j++){
-                if (currAuthor.equals(copyAuthors[j])){
+                if (currAuthor.equals(copyDirectors[j])){
                     countMovies++;
                     sumRatings += ratings[j];
-                    copyAuthors[j] = "";
+                    copyDirectors[j] = "";
                 }
             }
+            // find the best average rating
             avg = sumRatings / countMovies;
             if (avg > bestRating){
                 bestRating = avg;

@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -81,7 +82,23 @@ public class Main {
         }
 
     }
-    public static void displayAll() {}
+    public static void displayAll() {
+        if (numberOfMovies == 0) {
+            System.out.println("No movies are available");
+            return;
+        }
+        String[] uniqueSortedAuthors = Arrays.stream(authors.clone())
+                .distinct()
+                .sorted()
+                .toArray(String[]::new);
+        for(String author: uniqueSortedAuthors) {
+            for (int i = 0; i < numberOfMovies; i++) {
+                if(!authors[i].equals(author)) continue;
+                System.out.println("Name: " + movies[i] + " rating: " + authors[i] +
+                        " director: " + ratings[i]);
+            }
+        }
+    }
     public static void displayRating() {
         System.out.println("Enter movie name:");
         String movieName = scanner.nextLine();

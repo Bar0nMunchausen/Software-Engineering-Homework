@@ -1,0 +1,446 @@
+Test number 1 starts.
+Welcome to the Movies Management System!.
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Inception added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Exiting the program. Goodbye!
+Test number 1 ended.
+-----------------------------------------------
+Test number 2 starts.
+Welcome to the Movies Management System!.
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie The Dark Knight added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Interstellar added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Name: The Dark Knight rating: 9.0 director: Christopher Nolan
+Name: Interstellar rating: 8.7 director: Christopher Nolan
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Exiting the program. Goodbye!
+Test number 2 ended.
+-----------------------------------------------
+Test number 3 starts.
+Welcome to the Movies Management System!.
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Pulp Fiction added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Django Unchained added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Rating for Pulp Fiction: 8.9
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+No movie found with name Avatar
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Exiting the program. Goodbye!
+Test number 3 ended.
+-----------------------------------------------
+Test number 4 starts.
+Welcome to the Movies Management System!.
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Memento added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Dunkirk added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie The Prestige added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Best director: Christopher Nolan with an average rating of: 8.20
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Exiting the program. Goodbye!
+Test number 4 ended.
+-----------------------------------------------
+Test number 5 starts.
+Welcome to the Movies Management System!.
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Invalid rating
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Invalid choice. Please try again.
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Exiting the program. Goodbye!
+Test number 5 ended.
+-----------------------------------------------
+Test number 6 starts.
+Welcome to the Movies Management System!.
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Movie1 added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Movie2 added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Movie3 added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Movie4 added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Movie5 added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Movie6 added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Movie7 added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Movie8 added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Movie9 added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Movie10 added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Movie11 added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Exiting the program. Goodbye!
+Test number 6 ended.
+-----------------------------------------------
+Test number 7 starts.
+Welcome to the Movies Management System!.
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Gladiator added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Name: Gladiator rating: 8.6 director: Ridley Scott
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Exiting the program. Goodbye!
+Test number 7 ended.
+-----------------------------------------------
+Test number 8 starts.
+Welcome to the Movies Management System!.
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Titanic added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Invalid rating
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Invalid choice. Please try again.
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Rating for Titanic: 9.1
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Exiting the program. Goodbye!
+Test number 8 ended.
+-----------------------------------------------
+Test number 9 starts.
+Welcome to the Movies Management System!.
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie The Social Network added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Se7en added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Gone Girl added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Best director: David Fincher with an average rating of: 8.23
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Exiting the program. Goodbye!
+Test number 9 ended.
+-----------------------------------------------
+Test number 10 starts.
+Welcome to the Movies Management System!.
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Enter movie name:
+Enter rating:
+Enter director name:
+Movie Tenet added successfully!
+1. Add a new movie
+2. Display all movies
+3. Display movie rating
+4. Find the best director
+5. Exit
+Please enter your choice:
+Exiting the program. Goodbye!
+Test number 10 ended.
+-----------------------------------------------
+All tests have ended.

@@ -39,7 +39,7 @@ public class Main {
     }
     public static void addMovie(Scanner scanner) {
         System.out.println("Enter movie name:");
-        String movieName = scanner.next();
+        String movieName = scanner.nextLine();
 
         System.out.println("Enter rating:");
         double rating = scanner.nextDouble();
@@ -48,7 +48,7 @@ public class Main {
             System.exit(0);
         }
         System.out.println("Enter director name:");
-        String directorName = scanner.next();
+        String directorName = scanner.nextLine();
 
         if(!movieExist(movieName,directorName)) {
             if (numberOfMovies != 100) {
@@ -56,7 +56,7 @@ public class Main {
                 authors[numberOfMovies] = directorName;
                 ratings[numberOfMovies] = rating;
                 numberOfMovies++;
-                System.out.println("Movie" + movieName + "added successfully!");
+                System.out.println("Movie " + movieName + " added successfully!");
             }
             else {
                 System.out.println("Movies limit reached");

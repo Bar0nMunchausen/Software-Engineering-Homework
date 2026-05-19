@@ -7,6 +7,7 @@ public class Main {
     public static String[] movies = new String[100];
     public static String[] authors = new String[100];
     public static double[] ratings = new double[100];
+    public static int numberOfMovies = 0;
     public static void manageMovies() {
         String choice;
 
@@ -24,7 +25,7 @@ public class Main {
             choice = scanner.next();
             switch (choice){
                 case "1":
-                    addMovie(); break;
+                    addMovie(scanner); break;
                 case "2":
                     displayAll(); break;
                 case "3":
@@ -36,7 +37,49 @@ public class Main {
             }
         }
     }
-    public static void addMovie() {}
+    public static void addMovie(Scanner scanner) {
+        System.out.println("Enter movie name:");
+        String movieName = scanner.next();
+
+        System.out.println("Enter rating:");
+        double rating = scanner.nextDouble();
+        if(rating < 0 || rating > 10) {
+            System.out.println("Invalid rating");
+            System.exit(0);
+        }
+        System.out.println("Enter director name:");
+        String directorName = scanner.next();
+
+        if(!movieExist(movieName,directorName)) {
+            if (numberOfMovies != 100) {
+                movies[numberOfMovies] = movieName;
+                authors[numberOfMovies] = directorName;
+                ratings[numberOfMovies] = rating;
+                numberOfMovies++;
+                System.out.println("Movie" + movieName + "added successfully!");
+            }
+            else {
+                System.out.println("Movies limit reached");
+                System.exit(0);
+            }
+        }else{
+            updateMovie(movieName,rating);
+        }
+    }
+    public static boolean movieExist(String movieName,String directorName){
+           for (int i = 0; i < numberOfMovies; i++) {
+               if(movies[i].equals(movieName) && authors[i].equals(directorName)) return true;
+           }
+           return false;
+    }
+    public static void updateMovie(String movieName,double rating) {
+        for (int i = 0; i < numberOfMovies; i++) {
+            if(movies[i].equals(movieName)) {
+                ratings[i] = rating;
+            }
+        }
+
+    }
     public static void displayAll() {}
     public static void displayRating() {}
     public static void findBest() {}

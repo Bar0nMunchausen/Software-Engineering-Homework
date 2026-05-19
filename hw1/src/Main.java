@@ -53,7 +53,7 @@ public class Main {
         String directorName = scanner.nextLine();
 
         if(!movieExist(movieName,directorName)) {
-            if (numberOfMovies != 100) {
+            if (numberOfMovies < 100) {
                 movies[numberOfMovies] = movieName;
                 authors[numberOfMovies] = directorName;
                 ratings[numberOfMovies] = rating;
@@ -87,6 +87,7 @@ public class Main {
             System.out.println("No movies are available");
             return;
         }
+        if(authors == null) return;
         String[] uniqueSortedAuthors = Arrays.stream(authors.clone())
                 .distinct()
                 .sorted()

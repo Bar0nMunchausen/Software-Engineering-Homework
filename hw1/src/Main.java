@@ -7,13 +7,16 @@ import java.util.Scanner;
 public class Main {
     public static Scanner scanner; // Note: Do not change this line.
     public static int MAX_SIZE = 100;
-    public static String[] movies = new String[MAX_SIZE];
-    public static String[] authors = new String[MAX_SIZE];
-    public static double[] ratings = new double[MAX_SIZE];
+    public static String[] movies;
+    public static String[] authors;
+    public static double[] ratings;
     public static int numberOfMovies = 0;
     public static void manageMovies() {
         String choice;
-
+        movies = new String[MAX_SIZE];
+        authors = new String[MAX_SIZE];
+        ratings = new double[MAX_SIZE];
+        numberOfMovies = 0;
         System.out.println("Welcome to the Movies Management System!.");
         // add comments here!! + refactor names !!
         while (true) {
@@ -36,6 +39,8 @@ public class Main {
                     findBest(); break;
                 case "5":
                     exit(); return;
+                default:
+                    System.out.println("Invalid choice. Please try again."); break;
             }
         }
     }
@@ -48,7 +53,7 @@ public class Main {
         scanner.nextLine();
         if(rating < 0 || rating > 10) {
             System.out.println("Invalid rating");
-            System.exit(0);
+            return;
         }
         System.out.println("Enter director name:");
         String directorName = scanner.nextLine();
@@ -63,7 +68,7 @@ public class Main {
             }
             else {
                 System.out.println("Movies limit reached");
-                System.exit(0);
+                return;
             }
         } else {
             updateMovie(movieName,rating);
@@ -97,8 +102,8 @@ public class Main {
         for(String author: uniqueSortedAuthors) {
             for (int i = 0; i < numberOfMovies; i++) {
                 if(!authors[i].equals(author)) continue;
-                System.out.println("Name: " + movies[i] + " rating: " + authors[i] +
-                        " director: " + ratings[i]);
+                System.out.println("Name: " + movies[i] + " rating: " + ratings[i] +
+                        " director: " + authors[i]);
             }
         }
     }
@@ -148,7 +153,7 @@ public class Main {
             countMovies = 0;
         }
 
-        System.out.printf("Best director: %s with an average rating of: %.1f%n", bestAuthor, bestRating);
+        System.out.printf("Best director: %s with an average rating of: %.2f%n", bestAuthor, bestRating);
     }
 
 

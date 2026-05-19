@@ -14,8 +14,8 @@ public class Main {
     public static double[] ratings;
     public static int numberOfMovies = 0;
 
+    /** Core movie management function. */
     public static void manageMovies() {
-        // core movie management function
         String choice;
         movies = new String[MAX_SIZE];
         directors = new String[MAX_SIZE];
@@ -57,8 +57,8 @@ public class Main {
         }
     }
 
+    /** Adds a movie to the first empty array index. */
     public static void addMovie(Scanner scanner) {
-        // adds a movie to the first empty array index
         System.out.println("Enter movie name:");
         String movieName = scanner.nextLine();
 
@@ -89,16 +89,16 @@ public class Main {
         System.out.println("Movie " + movieName + " added successfully!");
     }
 
+    /** Returns true if the movie with the corresponding director exists. */
     public static boolean movieExist(String movieName) {
-        // returns true if the movie with the corresponding director exists
         for (int i = 0; i < numberOfMovies; i++) {
             if (movies[i].equals(movieName)) return true;
         }
         return false;
     }
 
+    /** Updates the existing movie with the new rating. */
     public static void updateMovie(String movieName, double rating) {
-        // updates the existing movie with the new rating
         for (int i = 0; i < numberOfMovies; i++) {
             if (movies[i].equals(movieName)) {
                 ratings[i] = rating;
@@ -107,8 +107,8 @@ public class Main {
 
     }
 
+    /** Displays all the existing movies with theirs directors and ratings. */
     public static void displayAll() {
-        // displays all the existing movies with theirs directors and ratings
         if (numberOfMovies == 0) {
             System.out.println("No movies are available");
             return;
@@ -129,8 +129,8 @@ public class Main {
         }
     }
 
+    /** Displays the rating of the entered movie. */
     public static void displayRating() {
-        // displays the rating of the entered movie
         System.out.println("Enter movie name:");
         String movieName = scanner.nextLine();
 
@@ -144,40 +144,40 @@ public class Main {
 
     }
 
+    /** Find the director with the best average rating. */
     public static void findBest() {
-        // find the director with the best average rating
         if (numberOfMovies == 0) {
-            System.out.println("No movies are available.");
+            System.out.println("No movies are available");
             return;
         }
         // copied the array so the changes won't affect the initial data
         String[] copyDirectors = new String[numberOfMovies];
         System.arraycopy(directors, 0, copyDirectors, 0, numberOfMovies);
 
-        String currAuthor = "";
+        String currentDirector = "";
         String bestAuthor = "";
         double bestRating = 0.0d;
         double sumRatings = 0.0d;
         int countMovies = 0;
-        double avg = 0.0;
+        double average = 0.0;
 
         // go over each director until the end, increasing the sum and count
         // make the "visited" directors empty, to skip unnecessary loops
         for (int i = 0; i < numberOfMovies; i++) {
             if (copyDirectors[i].isEmpty()) continue;
-            currAuthor = copyDirectors[i];
+            currentDirector = copyDirectors[i];
             for (int j = i; j < numberOfMovies; j++) {
-                if (currAuthor.equals(copyDirectors[j])) {
+                if (currentDirector.equals(copyDirectors[j])) {
                     countMovies++;
                     sumRatings += ratings[j];
                     copyDirectors[j] = "";
                 }
             }
             // find the best average rating
-            avg = sumRatings / countMovies;
-            if (avg > bestRating) {
-                bestRating = avg;
-                bestAuthor = currAuthor;
+            average = sumRatings / countMovies;
+            if (average > bestRating) {
+                bestRating = average;
+                bestAuthor = currentDirector;
             }
             sumRatings = 0;
             countMovies = 0;
@@ -187,8 +187,8 @@ public class Main {
     }
 
 
+    /** Prints the exit message. */
     public static void exit() {
-        // prints the exit message
         System.out.println("Exiting the program. Goodbye!");
     }
 

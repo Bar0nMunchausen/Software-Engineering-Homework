@@ -4,9 +4,26 @@ import java.util.Scanner;
 
 public class Main {
     public static Scanner scanner; // Note: Do not change this line.
+// add comments here!! + refactor names !!
+    public static void manageMovies() {
 
-    public static void manageMovies() {}
 
+
+
+
+
+
+    }
+
+    public static void addMovie() {}
+    public static void displayAll() {}
+    public static void displayRating() {}
+    public static void findBest() {}
+
+
+    public static void exit(){
+        System.out.println("Exiting the program. Goodbye!");
+    }
     public static void main(String[] args) throws IOException {
         String path = args[0];
 

@@ -4,25 +4,25 @@ import java.util.Scanner;
 
 public class Main {
     public static Scanner scanner; // Note: Do not change this line.
-    public static String[] movies = new String[100];
-    public static String[] authors = new String[100];
-    public static double[] ratings = new double[100];
+    public static int MAX_SIZE = 100;
+    public static String[] movies = new String[MAX_SIZE];
+    public static String[] authors = new String[MAX_SIZE];
+    public static double[] ratings = new double[MAX_SIZE];
     public static int numberOfMovies = 0;
     public static void manageMovies() {
         String choice;
 
         System.out.println("Welcome to the Movies Management System!.");
         // add comments here!! + refactor names !!
-        System.out.println("""
+        while (true) {
+            System.out.println("""
                 1. Add a new movie
                 2. Display all movies
                 3. Display movie rating
                 4. Find the best director
                 5. Exit""");
-
-        while (true) {
             System.out.println("Please enter your choice:");
-            choice = scanner.next();
+            choice = scanner.nextLine();
             switch (choice){
                 case "1":
                     addMovie(scanner); break;
@@ -33,7 +33,7 @@ public class Main {
                 case "4":
                     findBest(); break;
                 case "5":
-                    exit(); break;
+                    exit(); return;
             }
         }
     }
@@ -43,6 +43,7 @@ public class Main {
 
         System.out.println("Enter rating:");
         double rating = scanner.nextDouble();
+        scanner.nextLine();
         if(rating < 0 || rating > 10) {
             System.out.println("Invalid rating");
             System.exit(0);
@@ -62,7 +63,7 @@ public class Main {
                 System.out.println("Movies limit reached");
                 System.exit(0);
             }
-        }else{
+        } else {
             updateMovie(movieName,rating);
         }
     }
@@ -81,13 +82,58 @@ public class Main {
 
     }
     public static void displayAll() {}
-    public static void displayRating() {}
-    public static void findBest() {}
+    public static void displayRating() {
+        System.out.println("Enter movie name:");
+        String movieName = scanner.nextLine();
+
+        for (int i = 0; i < numberOfMovies; i++){
+            if (movieName.equals(movies[i])){
+                System.out.printf("Rating for %s: %.1f%n", movieName, ratings[i]);
+                return;
+            }
+        }
+        System.out.printf("No movie found with name %s%n", movieName);
+
+    }
+    public static void findBest() {
+        if (numberOfMovies == 0){
+            System.out.println("No movies are available.");
+        }
+        String[] copyAuthors = new String[numberOfMovies];
+        System.arraycopy(authors, 0, copyAuthors, 0, numberOfMovies);
+
+        String currAuthor = "";
+        String bestAuthor = "";
+        double bestRating = 0.0d;
+        double sumRatings = 0.0d;
+        int countMovies = 0;
+        double avg = 0.0;
+
+        for (int i = 0; i < numberOfMovies; i++){
+            if (copyAuthors[i].isEmpty()) continue;
+            currAuthor = copyAuthors[i];
+            for (int j = i; j < numberOfMovies; j++){
+                if (currAuthor.equals(copyAuthors[j])){
+                    countMovies++;
+                    sumRatings += ratings[j];
+                    copyAuthors[j] = "";
+                }
+            }
+            avg = sumRatings / countMovies;
+            if (avg > bestRating){
+                bestRating = avg;
+                bestAuthor = currAuthor;
+            }
+            sumRatings = 0;
+            countMovies = 0;
+        }
+
+        System.out.printf("Best director: %s with an average rating of: %.1f%n", bestAuthor, bestRating);
+    }
 
 
     public static void exit(){
         System.out.println("Exiting the program. Goodbye!");
-        System.exit(0);
     }
     public static void main(String[] args) throws IOException {
         String path = args[0];

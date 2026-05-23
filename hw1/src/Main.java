@@ -132,7 +132,6 @@ public class Main {
             }
         }
 
-
         // print movies and rating of each director
         for (int k = 0; k < uniqueCount; k++) {
             String author = uniqueSortedDirectors[k];

@@ -114,13 +114,28 @@ public class Main {
             return;
         }
         if (directors == null) return;
-        // sort the directors in lexicographical ascending order
-        String[] uniqueSortedDirectors = Arrays.stream(directors)
-                .filter(Objects::nonNull)
-                .distinct()
-                .toArray(String[]::new);
+        String[] uniqueSortedDirectors = new String[numberOfMovies];
+        int uniqueCount = 0;
+
+        for (int i = 0; i < numberOfMovies; i++) {
+            String currentDirector = directors[i];
+            boolean isDuplicate = false;
+            for (int j = 0; j < uniqueCount; j++) {
+                if (uniqueSortedDirectors[j].equals(currentDirector)) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+            if (!isDuplicate) {
+                uniqueSortedDirectors[uniqueCount] = currentDirector;
+                uniqueCount++;
+            }
+        }
+
+
         // print movies and rating of each director
-        for (String author : uniqueSortedDirectors) {
+        for (int k = 0; k < uniqueCount; k++) {
+            String author = uniqueSortedDirectors[k];
             for (int i = 0; i < numberOfMovies; i++) {
                 if (!directors[i].equals(author)) continue;
                 System.out.println("Name: " + movies[i] + " rating: " + ratings[i] +

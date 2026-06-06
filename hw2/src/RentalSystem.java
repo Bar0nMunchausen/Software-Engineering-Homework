@@ -61,9 +61,12 @@ public class RentalSystem {
             directors[lastDirectorIndex] = null;
             directorMovies[directorIndex] = directorMovies[lastDirectorIndex];
             directorMovies[lastDirectorIndex] = 0;
+        } else if (directorMovies[directorIndex] > 1){
+            directorMovies[directorIndex]--;
         }
 
-        return;
+        movies[movieIndex] = movies[lastMovieIndex];
+        movies[lastMovieIndex] = null;
     }
 
     public void printMovies(){

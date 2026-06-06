@@ -3,6 +3,7 @@ public class RentalSystem {
     public static final int MAX = 30;
     private Movie[] movies;
     private Director[] directors;
+    private int[] directorMovies;
     private int[] rented;
     private Customer[] customers;
     private int lastMovieIndex;
@@ -11,6 +12,7 @@ public class RentalSystem {
     public RentalSystem(){
         this.movies = new Movie[MAX];
         this.directors = new Director[MAX];
+        this.directorMovies = new int[MAX];
         this.customers = new Customer[MAX];
         this.rented = new int[MAX];
         this.lastMovieIndex = 0;
@@ -40,17 +42,26 @@ public class RentalSystem {
         }
     }
 
-    public int findDirector(String directorName){
-       for(int i = 0; i < directors.length; i++){
-           if(directorName.equals(directors[i])) {
-               return i;
-           }
-       }
-        return -1;
-    }
-
-
     public void removeMovie(String title, int releaseYear, String director){
+        int movieIndex = findMovie(title, releaseYear, director);
+        if (movieIndex == -1){
+            System.out.println("No such movie exists.");
+            return;
+        }
+        if (isRented(movieIndex)){
+            System.out.println("Cannot remove a rented movie.");
+            return;
+        }
+        int directorIndex = findDirector(director);
+        if (directorMovies[directorIndex] == 1){
+            directors[directorIndex] = null;
+            directorMovies[directorIndex] = 0;
+
+            directors[directorIndex] = directors[lastDirectorIndex];
+            directors[lastDirectorIndex] = null;
+            directorMovies[directorIndex] = directorMovies[lastDirectorIndex];
+            directorMovies[lastDirectorIndex] = 0;
+        }
 
         return;
     }
@@ -68,7 +79,26 @@ public class RentalSystem {
     }
 
     public int findMovie(String title, int releaseYear, String director){
-        return 0;
 
+        for (int i = 0; i < MAX; i++){
+            if (movies[i].equals(title, releaseYear, director)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int findDirector(String directorName){
+        for(int i = 0; i < lastDirectorIndex; i++){
+            if(directors[i].equals(directorName)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
+    public boolean isRented(int index){
+        return this.rented[index] > 0;
     }
 }

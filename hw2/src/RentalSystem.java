@@ -90,21 +90,26 @@ public class RentalSystem {
         }
 
         if (lastCustomerIndex == 0 || allUnRented == true) {
+            System.out.println("Rented Movies: ");
             System.out.println("No Rented movies.");
             System.out.println("Unrented Movies: ");
             for (int i = 0; i < lastMovieIndex; i++) {
                 System.out.println(movies[i].toString());
             }
         } else if (lastMovieIndex == 0) {
-            System.out.println("No Unrented movies");
+            System.out.println("Rented Movies: ");
             System.out.println("No Rented movies.");
+            System.out.println("Unrented Movies: ");
+            System.out.println("No Unrented movies");
+
             return;
         } else if (allRented == true) {
-            System.out.println("No Unrented movies");
             System.out.println("Rented Movies: ");
             for (int i = 0; i < lastMovieIndex; i++) {
                 System.out.println(movies[i]);
             }
+            System.out.println("Unrented Movies: ");
+            System.out.println("No Unrented movies");
         } else {
             System.out.println("Rented Movies: ");
             for (int i = 0; i < lastMovieIndex; i++) {

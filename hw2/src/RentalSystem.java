@@ -52,6 +52,7 @@ public class RentalSystem {
         }
     }
 
+
     public void removeMovie(String title, int releaseYear, String director){
         int movieIndex = findMovie(title, releaseYear, director);
         if (movieIndex == -1){

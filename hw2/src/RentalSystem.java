@@ -85,7 +85,6 @@ public class RentalSystem {
         Movie[] UnrentedMovies =  new Movie[MAX];
         Movie[] rantedMovies =  new Movie[MAX];
 
-
         for(int i = 0; i < lastMovieIndex; i++) {
             for (int j = 0; j < lastCustomerIndex; j++) {
                 if(customers[j].isRenting(movies[i])){

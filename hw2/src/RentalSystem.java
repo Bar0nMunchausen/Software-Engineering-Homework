@@ -86,6 +86,9 @@ public class RentalSystem {
     }
 
     public void rentMovie(String name, String id, String title, int releaseYear, String director){
+        if (lastCustomerIndex >= MAX){
+            
+        }
         return;
     }
 
@@ -106,6 +109,15 @@ public class RentalSystem {
     public int findDirector(String directorName){
         for(int i = 0; i < lastDirectorIndex; i++){
             if(directors[i].equals(directorName)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int findCustomer(String id){
+        for (int i = 0; i < MAX; i++){
+            if (customers[i].equals(id)){
                 return i;
             }
         }

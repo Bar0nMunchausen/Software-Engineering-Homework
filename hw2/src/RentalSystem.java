@@ -115,13 +115,48 @@ public class RentalSystem {
     }
 
     public void rentMovie(String name, String id, String title, int releaseYear, String director){
-        if (lastCustomerIndex >= MAX){
-            
+        int customerIndex = findCustomer(id);
+        if (lastCustomerIndex >= MAX && customerIndex == -1){
+            System.out.println("No room for new customers.");
+            return;
         }
-        return;
+        int movieIndex = findMovie(title, releaseYear, director);
+        if (movieIndex == -1){
+            System.out.println("No such movie exists.");
+            return;
+        }
+
+        if (customers[customerIndex].isRenting(movies[movieIndex])){
+            System.out.println("Customer already has this movies.");
+            return;
+        }
+
+        if (customerIndex == -1) {
+            Customer customer = new Customer(name, id);
+            customers[++lastCustomerIndex] = customer;
+            customerIndex = lastCustomerIndex;
+        }
+        customers[customerIndex].rentMovie(movies[movieIndex]);
     }
 
     public void returnMovie(String id, String title, int releaseYear, String director){
+        int customerIndex = findCustomer(id);
+        if (customerIndex == -1){
+            System.out.println("Customer not found.");
+            return;
+        }
+        int movieIndex = findMovie(title, releaseYear, director);
+        if (movieIndex == -1 || customers[customerIndex].returnMovie(movies[movieIndex])){
+            System.out.println("Customer cannot return the movie.");
+            return;
+        }
+
+        rented[movieIndex]--;
+
+        if (customers[customerIndex].isEmpty()){
+            customers[customerIndex] = customers[lastCustomerIndex];
+            customers[lastCustomerIndex--] = null;
+        }
         return;
     }
 

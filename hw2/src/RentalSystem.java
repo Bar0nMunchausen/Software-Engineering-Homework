@@ -14,6 +14,7 @@ public class RentalSystem {
         this.customers = new Customer[MAX];
         this.rented = new int[MAX];
         this.lastMovieIndex = 0;
+        this.lastDirectorIndex = 0;
     }
 
     public void addMovie(String title, Genre genre, int releaseYear,
@@ -25,14 +26,20 @@ public class RentalSystem {
             System.out.println("Movie is already in the system");
         }
         else{
-            if(!findDirector(director)) {
-
+            int index = findDirector(director);
+            if(index == -1) {
+                lastDirectorIndex++;
+                directors[lastDirectorIndex] = new Director(director,biography);
+                lastMovieIndex++;
+                movies[lastMovieIndex] = new Movie(title, releaseYear, directors[lastDirectorIndex],genre);
             }
-
-            movies[]
-            lastMovieIndex++;
+            else {
+                lastMovieIndex++;
+                movies[lastMovieIndex] = new Movie(title, releaseYear, directors[index],genre);
+            }
         }
     }
+
     public int findDirector(String directorName){
        for(int i = 0; i < directors.length; i++){
            if(directorName.equals(directors[i])) {

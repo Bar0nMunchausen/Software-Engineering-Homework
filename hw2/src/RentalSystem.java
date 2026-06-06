@@ -6,6 +6,7 @@ public class RentalSystem {
     private int[] directorMovies;
     private int[] rented;
     private Customer[] customers;
+    private int lastCustomerIndex;
     private int lastMovieIndex;
     private int lastDirectorIndex;
 
@@ -70,7 +71,18 @@ public class RentalSystem {
     }
 
     public void printMovies(){
-        return;
+
+        for(int i = 0; i < lastMovieIndex; i++) {
+            for (int j = 0; j < lastCustomerIndex; j++) {
+                if(customers[j].findMovie(movies[i]))
+
+            }
+        }
+       System.out.println("No Rented movies");
+
+
+
+       System.out.println("No Unrented movies");
     }
 
     public void rentMovie(String name, String id, String title, int releaseYear, String director){
@@ -83,7 +95,7 @@ public class RentalSystem {
 
     public int findMovie(String title, int releaseYear, String director){
 
-        for (int i = 0; i < MAX; i++){
+        for (int i = 0; i < lastMovieIndex; i++){
             if (movies[i].equals(title, releaseYear, director)){
                 return i;
             }

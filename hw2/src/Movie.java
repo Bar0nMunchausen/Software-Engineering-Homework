@@ -26,6 +26,6 @@ public class Movie {
     @Override
     public String toString() {
         return ("Title: " + this.title + ", Genre: " + this.genre.toString() +
-                ", Year: " +releaseYear +" director: " + director.toString());
+                ", Year: " +releaseYear +", director: " + director.toString());
     }
 }

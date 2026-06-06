@@ -14,4 +14,8 @@ public class Director {
     public boolean equals(String otherName){
         return this.name.equals(otherName);
     }
+
+    public String toString(){
+        return this.name;
+    }
 }

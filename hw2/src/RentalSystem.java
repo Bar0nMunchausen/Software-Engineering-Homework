@@ -71,6 +71,8 @@ public class RentalSystem {
         } else if (directorMovies[directorIndex] > 1){
             directorMovies[directorIndex]--;
         }
+        rented[movieIndex] = rented[lastMovieIndex - 1];
+        rented[lastMovieIndex - 1] = 0;
 
         movies[movieIndex] = movies[lastMovieIndex - 1];
         movies[lastMovieIndex - 1] = null;

@@ -42,12 +42,15 @@ public class Customer {
 
     public boolean isRenting(Movie movie){
         for (int i = 0; i < MAX; i++){
-            if (rented_movies[i].equals(movie)){
+            if (rented_movies[i] != null && rented_movies[i].equals(movie)){
                 return true;
             }
         }
         return false;
     }
 
+    public boolean equals(String other_id){
+        return this.id.equals(other_id);
+    }
 
 }

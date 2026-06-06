@@ -33,11 +33,17 @@ public class RentalSystem {
             int index = findDirector(director);
             if(index == -1) {
 
-                directors[lastDirectorIndex] = new Director(director,biography);
-                lastDirectorIndex++;
+                if (directors[0] == null && movies[0] == null){
+                    directors[lastDirectorIndex] = new Director(director,biography);
+                    movies[lastMovieIndex] = new Movie(title, releaseYear, directors[lastDirectorIndex],genre);
 
-                movies[lastMovieIndex] = new Movie(title, releaseYear, directors[lastDirectorIndex],genre);
-                lastMovieIndex++;
+                } else {
+                    lastDirectorIndex++;
+                    lastMovieIndex++;
+                    directors[lastDirectorIndex] = new Director(director,biography);
+                    movies[lastMovieIndex] = new Movie(title, releaseYear, directors[lastDirectorIndex],genre);
+                }
+
             }
             else {
                 lastMovieIndex++;
@@ -126,14 +132,18 @@ public class RentalSystem {
             return;
         }
 
-        if (customers[customerIndex].isRenting(movies[movieIndex])){
+        if (customerIndex != -1 && customers[customerIndex].isRenting(movies[movieIndex])){
             System.out.println("Customer already has this movies.");
             return;
         }
 
         if (customerIndex == -1) {
             Customer customer = new Customer(name, id);
-            customers[++lastCustomerIndex] = customer;
+            if (customers[0] == null){
+                customers[lastCustomerIndex] = customer;
+            } else {
+                customers[++lastCustomerIndex] = customer;
+            }
             customerIndex = lastCustomerIndex;
         }
         customers[customerIndex].rentMovie(movies[movieIndex]);
@@ -161,7 +171,6 @@ public class RentalSystem {
     }
 
     public int findMovie(String title, int releaseYear, String director){
-
         for (int i = 0; i < lastMovieIndex; i++){
             if (movies[i].equals(title, releaseYear, director)){
                 return i;
@@ -180,7 +189,7 @@ public class RentalSystem {
     }
 
     public int findCustomer(String id){
-        for (int i = 0; i < MAX; i++){
+        for (int i = 0; i < lastCustomerIndex; i++){
             if (customers[i].equals(id)){
                 return i;
             }

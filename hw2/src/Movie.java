@@ -9,6 +9,7 @@ public class Movie {
         this.title = title;
         this.releaseYear = releaseYear;
         this.director = director;
+        this.genre = genre;
     }
     public String getTitle() {
         return title;

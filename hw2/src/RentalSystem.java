@@ -4,11 +4,13 @@ public class RentalSystem {
     private Movie[] movies;
     private int[] rented;
     private Customer[] customers;
+    private int lastMovieIndex;
 
     public RentalSystem(){
         this.movies = new Movie[MAX];
         this.customers = new Customer[MAX];
         this.rented = new int[MAX];
+        this.lastMovieIndex = 0;
     }
 
     public void addMovie(String title, Genre genre, int releaseYear, String director, String biography){
@@ -25,6 +27,10 @@ public class RentalSystem {
     }
 
     public void rentMovie(String name, String id, String title, int releaseYear, String director){
+        return;
+    }
+
+    public void returnMovie(String id, String title, int releaseYear, String director){
         return;
     }
 

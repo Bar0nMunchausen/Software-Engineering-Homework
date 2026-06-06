@@ -192,7 +192,7 @@ public class RentalSystem {
 
     public int findCustomer(String id){
         for (int i = 0; i < lastCustomerIndex; i++){
-            if (customers[i].equals(id)){
+            if (customers[i] != null && customers[i].equals(id)){
                 return i;
             }
         }

@@ -21,6 +21,7 @@ public class RentalSystem {
         this.lastCustomerIndex = 0;
     }
 
+
     public void addMovie(String title, Genre genre, int releaseYear,
                          String director, String biography) {
         if (lastMovieIndex == 30) {

@@ -146,7 +146,10 @@ public class RentalSystem {
             }
             customerIndex = lastCustomerIndex;
         }
-        customers[customerIndex].rentMovie(movies[movieIndex]);
+        boolean result = customers[customerIndex].rentMovie(movies[movieIndex]);
+        if (!result){
+            System.out.println("Customer has reached the limit");
+        }
     }
 
     public void returnMovie(String id, String title, int releaseYear, String director){

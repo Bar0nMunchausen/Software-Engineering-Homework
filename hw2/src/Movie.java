@@ -43,6 +43,12 @@ public class Movie {
                 this.director.equals(other.director));
     }
 
+    public boolean equals(String title, int releaseYear, String director) {
+        return (this.title.equals(title) &&
+                this.releaseYear == releaseYear &&
+                this.director.equals(director));
+    }
+
     @Override
     public String toString() {
         return ("Title: " + this.title + ", Genre: " + this.genre.toString() +

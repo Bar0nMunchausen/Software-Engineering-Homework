@@ -82,17 +82,17 @@ public class RentalSystem {
     public void printMovies(){
         int lastUnrentedMoviesIndex = 0;
         int lastRantedMoviesIndex = 0;
-        Movie[] UnrentedMovies =  new Movie[MAX];
-        Movie[] rantedMovies =  new Movie[MAX];
+        Movie[] unrentedMovies =  new Movie[MAX];
+        Movie[] rentedMovies =  new Movie[MAX];
 
         for(int i = 0; i < lastMovieIndex; i++) {
             for (int j = 0; j < lastCustomerIndex; j++) {
                 if(customers[j].isRenting(movies[i])){
-                    rantedMovies[lastRantedMoviesIndex] = movies[i];
+                    rentedMovies[lastRantedMoviesIndex] = movies[i];
                     lastRantedMoviesIndex++;
                     break;
                 }
-                UnrentedMovies[lastUnrentedMoviesIndex] = movies[i];
+                unrentedMovies[lastUnrentedMoviesIndex] = movies[i];
                 lastUnrentedMoviesIndex++;
             }
         }
@@ -106,7 +106,7 @@ public class RentalSystem {
         }else {
             System.out.println("Rented movies: ");
             for(int i = 0; i < lastRantedMoviesIndex; i++){
-                System.out.println(rantedMovies[i]);
+                System.out.println(rentedMovies[i]);
             }
         }
         if(lastUnrentedMoviesIndex == 0){
@@ -114,7 +114,7 @@ public class RentalSystem {
         }else {
             System.out.println("Unrented movies: ");
             for (int i = 0; i < lastUnrentedMoviesIndex; i++) {
-                System.out.println(UnrentedMovies[i]);
+                System.out.println(unrentedMovies[i]);
             }
         }
     }

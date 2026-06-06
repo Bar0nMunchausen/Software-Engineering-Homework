@@ -11,7 +11,7 @@ public class Director {
         return this.name.equals(other.name);
     }
 
-    public boolean equals(String other_name){
-        return this.name.equals(other_name);
+    public boolean equals(String otherName){
+        return this.name.equals(otherName);
     }
 }

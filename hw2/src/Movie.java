@@ -4,39 +4,12 @@ public class Movie {
     private int releaseYear;
     private Director director;
 
-    private int id;
     public Movie(String title, int releaseYear, Director director, Genre genre) {
         this.title = title;
         this.releaseYear = releaseYear;
         this.director = director;
         this.genre = genre;
     }
-    public String getTitle() {
-        return title;
-    }
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public int getReleaseYear() {
-        return releaseYear;
-    }
-    public void setReleaseYear(int releaseYear) {
-        this.releaseYear = releaseYear;
-    }
-    public Director getDirectorName() {
-        return director;
-    }
-    public void setDirectorName(Director directorName) {
-        this.director = directorName;
-    }
-
-    public Genre getGenre() {
-        return genre;
-    }
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
-
 
     public boolean equals(Movie other) {
         return (this.title.equals(other.title) &&

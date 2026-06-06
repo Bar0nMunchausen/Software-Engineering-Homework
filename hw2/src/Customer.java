@@ -1,19 +1,19 @@
 public class Customer {
     private String name;
     private String  id;
-    private Movie[] rented_movies;
+    private Movie[] rentedMovies;
 
     private static final int MAX = 5;
 
     public Customer(String name, String id){
         this.name = name;
         this.id = id;
-        this.rented_movies = new Movie[MAX];
+        this.rentedMovies = new Movie[MAX];
     }
 
     public boolean isEmpty(){
         for (int i = 0; i < MAX; i++){
-            if (rented_movies[i] != null){
+            if (rentedMovies[i] != null){
                 return false;
             }
         }
@@ -22,8 +22,8 @@ public class Customer {
 
     public boolean rentMovie(Movie movie){
         for (int i = 0; i < MAX; i++){
-            if (rented_movies[i] == null){
-                rented_movies[i] = movie;
+            if (rentedMovies[i] == null){
+                rentedMovies[i] = movie;
                 return true;
             }
         }
@@ -32,8 +32,8 @@ public class Customer {
 
     public boolean returnMovie(Movie movie){
         for (int i = 0; i < MAX; i++){
-            if (rented_movies[i].equals(movie)){
-                rented_movies[i] = null;
+            if (rentedMovies[i].equals(movie)){
+                rentedMovies[i] = null;
                 return true;
             }
         }
@@ -42,7 +42,7 @@ public class Customer {
 
     public boolean isRenting(Movie movie){
         for (int i = 0; i < MAX; i++){
-            if (rented_movies[i] != null && rented_movies[i].equals(movie)){
+            if (rentedMovies[i] != null && rentedMovies[i].equals(movie)){
                 return true;
             }
         }

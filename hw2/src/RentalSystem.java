@@ -18,6 +18,7 @@ public class RentalSystem {
         this.rented = new int[MAX];
         this.lastMovieIndex = 0;
         this.lastDirectorIndex = 0;
+        this.lastCustomerIndex = 0;
     }
 
     public void addMovie(String title, Genre genre, int releaseYear,
@@ -31,10 +32,12 @@ public class RentalSystem {
         else{
             int index = findDirector(director);
             if(index == -1) {
-                lastDirectorIndex++;
+
                 directors[lastDirectorIndex] = new Director(director,biography);
-                lastMovieIndex++;
+                lastDirectorIndex++;
+
                 movies[lastMovieIndex] = new Movie(title, releaseYear, directors[lastDirectorIndex],genre);
+                lastMovieIndex++;
             }
             else {
                 lastMovieIndex++;
@@ -71,18 +74,43 @@ public class RentalSystem {
     }
 
     public void printMovies(){
+        int lastUnrentedMoviesIndex = 0;
+        int lastRantedMoviesIndex = 0;
+        Movie[] UnrentedMovies =  new Movie[MAX];
+        Movie[] rantedMovies =  new Movie[MAX];
 
         for(int i = 0; i < lastMovieIndex; i++) {
             for (int j = 0; j < lastCustomerIndex; j++) {
-                if(customers[j].findMovie(movies[i]))
-
+                if(customers[j].isRenting(movies[i])){
+                    rantedMovies[lastRantedMoviesIndex] = movies[i];
+                    lastRantedMoviesIndex++;
+                    break;
+                }
+                UnrentedMovies[lastUnrentedMoviesIndex] = movies[i];
+                lastUnrentedMoviesIndex++;
             }
         }
-       System.out.println("No Rented movies");
-
-
-
-       System.out.println("No Unrented movies");
+        if(lastUnrentedMoviesIndex == 0 && lastRantedMoviesIndex == 0){
+            System.out.println("No Unrented movies");
+            System.out.println("No Rented movies");
+            return;
+        }
+        if(lastRantedMoviesIndex == 0){
+            System.out.println("No Rented movies");
+        }else {
+            System.out.println("Rented movies: ");
+            for(int i = 0; i < lastRantedMoviesIndex; i++){
+                System.out.println(rantedMovies[i]);
+            }
+        }
+        if(lastUnrentedMoviesIndex == 0){
+            System.out.println("No Unrented movies");
+        }else {
+            System.out.println("Unrented movies: ");
+            for (int i = 0; i < lastUnrentedMoviesIndex; i++) {
+                System.out.println(UnrentedMovies[i]);
+            }
+        }
     }
 
     public void rentMovie(String name, String id, String title, int releaseYear, String director){

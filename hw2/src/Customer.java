@@ -49,8 +49,8 @@ public class Customer {
         return false;
     }
 
-    public boolean equals(String otherId){
-        return this.id.equals(otherId);
+    public boolean equals(String otherID){
+        return this.id.equals(otherID);
     }
 
 }

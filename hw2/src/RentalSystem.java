@@ -80,48 +80,38 @@ public class RentalSystem {
     }
 
     public void printMovies() {
-        boolean allRented = true;
-        boolean allUnRented = true;
-        for (int i = 0; i < lastMovieIndex; i++) {
-            if (rented[i] != 0) {
-                allUnRented = false;
-            }
-            if (rented[i] == 0) {
-                allRented = false;
+        int rentCounter = 0;
+        int unrentCounter = 0;
+        for (int i = 0; i < lastMovieIndex; i++){
+            if (rented[i] > 0) {
+                rentCounter++;
+            } else {
+                unrentCounter++;
             }
         }
 
-        if (lastCustomerIndex == 0 || allUnRented == true) {
-            System.out.println("Rented Movies: ");
+        System.out.println("Rented Movies: ");
+        if (rentCounter == 0) {
             System.out.println("No Rented movies.");
-            System.out.println("Unrented Movies: ");
-            for (int i = 0; i < lastMovieIndex; i++) {
-                System.out.println(movies[i].toString());
-            }
-        } else if (lastMovieIndex == 0) {
-            System.out.println("Rented Movies: ");
-            System.out.println("No Rented movies.");
-            System.out.println("Unrented Movies: ");
-            System.out.println("No Unrented movies");
-
-            return;
-        } else if (allRented == true) {
-            System.out.println("Rented Movies: ");
-            for (int i = 0; i < lastMovieIndex; i++) {
-                System.out.println(movies[i]);
-            }
-            System.out.println("Unrented Movies: ");
-            System.out.println("No Unrented movies");
         } else {
-            System.out.println("Rented Movies: ");
             for (int i = 0; i < lastMovieIndex; i++) {
-                if (rented[i] != 0) {
+                if (rented[i] > 0 && rentCounter > 0) {
+                    System.out.println(movies[i]);
+                    rentCounter--;
+                } else if (rented[i] > 0 && rentCounter == 0){
                     System.out.println(movies[i]);
                 }
             }
-            System.out.println("Unrented Movies: ");
+        }
+        System.out.println("Unrented Movies: ");
+        if (unrentCounter == 0) {
+            System.out.println("No Unrented movies.");
+        } else {
             for (int i = 0; i < lastMovieIndex; i++) {
-                if (rented[i] == 0) {
+                if (rented[i] == 0 && unrentCounter > 0) {
+                    System.out.println(movies[i]);
+                    unrentCounter--;
+                } else if (rented[i] == 0 && rentCounter == 0){
                     System.out.println(movies[i]);
                 }
             }

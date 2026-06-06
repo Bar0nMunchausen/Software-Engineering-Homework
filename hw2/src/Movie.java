@@ -2,13 +2,13 @@ public class Movie {
     private String title;
     private Genre genre;
     private int releaseYear;
-    private String directorName;
+    private Director director;
 
     private int id;
-    public Movie(String title, int releaseYear, String directorName, Genre genre) {
+    public Movie(String title, int releaseYear, Director director, Genre genre) {
         this.title = title;
         this.releaseYear = releaseYear;
-        this.directorName = directorName;
+        this.director = director;
     }
     public String getTitle() {
         return title;
@@ -22,11 +22,11 @@ public class Movie {
     public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
     }
-    public String getDirectorName() {
-        return directorName;
+    public Director getDirectorName() {
+        return director;
     }
-    public void setDirectorName(String directorName) {
-        this.directorName = directorName;
+    public void setDirectorName(Director directorName) {
+        this.director = directorName;
     }
 
     public Genre getGenre() {
@@ -40,12 +40,12 @@ public class Movie {
     public boolean equals(Movie other) {
         return (this.title.equals(other.title) &&
                 this.releaseYear == other.releaseYear &&
-                this.directorName.equals(other.directorName));
+                this.director.equals(other.director));
     }
 
     @Override
     public String toString() {
         return ("Title: " + this.title + ", Genre: " + this.genre.toString() +
-                ", Year: " +releaseYear +" director: " + directorName);
+                ", Year: " +releaseYear +" director: " + director.toString());
     }
 }

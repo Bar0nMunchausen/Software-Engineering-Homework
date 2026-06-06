@@ -35,7 +35,11 @@ public class RentalSystem {
     }
 
     public int findMovie(String title, int releaseYear, String director){
-        return 0;
+
+        for (int i = 0; i < MAX; i++){
+
+        }
+        return -1;
 
     }
 }

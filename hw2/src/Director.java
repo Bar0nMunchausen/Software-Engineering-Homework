@@ -1,3 +1,8 @@
+/**
+ * Represents the director class.
+ * Has only name and biography as properties.
+ * Handles the basic construction method, two equals method with different headers, simple toString method.
+ */
 public class Director {
     private String name;
     private String biography;

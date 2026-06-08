@@ -1,3 +1,8 @@
+/**
+ * Represents the Movie class.
+ * Has properties like title, genre, releaseYear, director (instance).
+ * Handles the basic construction method, two equals method with different headers, formatted toString method.
+ */
 public class Movie {
     private String title;
     private Genre genre;

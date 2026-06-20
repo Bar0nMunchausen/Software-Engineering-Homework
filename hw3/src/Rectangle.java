@@ -6,15 +6,15 @@ public class Rectangle extends Shape {
     private int height;
     private int width;
 
+    /**
+     * Constructs a new Rectangle with the given width and height.
+     * Allocates and initializes the internal character matrix accordingly
+     *
+     * @param width  the horizontal size of the rectangle.
+     * @param height the vertical size of the rectangle.
+     * @throws IllegalArgumentException if either width or height is negative.
+     */
     public Rectangle(int width, int height) {
-        /**
-         * Constructs a new Rectangle with the given width and height.
-         * Allocates and initializes the internal character matrix accordingly
-         *
-         * @param width  the horizontal size of the rectangle.
-         * @param height the vertical size of the rectangle.
-         * @throws IllegalArgumentException if either width or height is negative.
-         */
         if (width < 0 || height < 0) {
             throw new IllegalArgumentException("Dimensions cannot be negative");
         }
@@ -29,6 +29,8 @@ public class Rectangle extends Shape {
             }
         }
 
+        // builds a matrix representation of the rectangle shape with given dimensions according to instructions
+        // and constructs a StringBuilder containing that matrix
         for (int i = 0; i < symbol.length; i++) {
             for (int j = 1; j < symbol[0].length; j = j + 3) {
                 symbol[i][j] = STAR_SYMBOL;
@@ -71,5 +73,23 @@ public class Rectangle extends Shape {
     public String toString() {
         return sb.toString().replace('\0', SPACE_SYMBOL);
 
+    }
+
+    /**
+     * Compares this Rectangle to the specified object.
+     * The result is true if and only if the object passes the base
+     * class checks (is not null and is the exact same class), and has the
+     * exact same width and height as this Rectangle.
+     *
+     * @param obj the object to compare.
+     * @return true if the given object represents an identical Rectangle,
+     * false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) return false;
+
+        Rectangle other = (Rectangle) obj;
+        return this.width == other.width && this.height == other.height;
     }
 }

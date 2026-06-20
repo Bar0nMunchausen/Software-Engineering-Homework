@@ -1,6 +1,10 @@
+/**
+ * Main class that holds and operates the canvas by adding, removing,
+ * calculating total area and perimeters, displaying the canvas in the console
+ */
 public class Canvas {
     /**
-     * Printing settings constants.
+     * Settings constants for printing.
      */
     private static final char STAR_SYMBOL = '*';
     private static final char SPACE_SYMBOL = ' ';
@@ -56,7 +60,7 @@ public class Canvas {
      * @throws IllegalArgumentException when provided illegal indexes
      */
     public void addShape(Shape shape, int row, int column) {
-         if ((0 <= row && row <= height) && (0 <= column && column <= width)){
+         if ((0 <= row && row < height) && (0 <= column && column < width)){
             this.shapes[row][column] = shape;
          } else {
              throw new IllegalArgumentException("Illegal indexes provided");
@@ -68,7 +72,7 @@ public class Canvas {
      * @throws IllegalArgumentException when provided illegal indexes
      */
     public void removeShape(int row, int column) {
-        if ((0 <= row && row <= height) && (0 <= column && column <= width)){
+        if ((0 <= row && row < height) && (0 <= column && column < width)){
             this.shapes[row][column] = null;
         } else {
             throw new IllegalArgumentException("Illegal indexes provided");
@@ -110,14 +114,14 @@ public class Canvas {
             start_x = 0;
             int height = this.getMaxHeight(row);
             int width = this.calculateWidthForBoard(row);
-            int maxWidth = this.getMaxWidth(row);
+            int maxWidth = this.getMaxWidth() * SPACING_FACTOR;
             board = new char[height][width];
             emptyBoard(board, width, height);
 
             for (int col = 0; col < this.width; col++) {
                 if (this.shapes[row][col] != null) {
                     placeShape(board, this.shapes[row][col].getSymbol(), this.shapes[row][col].getWidth() * SPACING_FACTOR, this.shapes[row][col].getHeight(), start_x);
-                    start_x += this.shapes[row][col].getWidth() + SPACING_FACTOR;
+                    start_x += (this.shapes[row][col].getWidth() * SPACING_FACTOR) + SPACING_FACTOR;
                 } else {
                     start_x += maxWidth + SPACING_FACTOR;
                 }
@@ -170,7 +174,7 @@ public class Canvas {
      */
     private int calculateWidthForBoard(int row) {
         int sum = 0;
-        int maxWidth = getMaxWidth(row);
+        int maxWidth = getMaxWidth() * SPACING_FACTOR;
         for (int col = 0; col < this.width; col++) {
             if (this.shapes[row][col] != null) {
                 sum += this.shapes[row][col].getWidth() * SPACING_FACTOR;
@@ -204,8 +208,10 @@ public class Canvas {
         int width;
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
-                width = shapes[row][col].getWidth();
-                if (width > max) max = width;
+                if (this.shapes[row][col] != null) {
+                    width = shapes[row][col].getWidth();
+                    if (width > max) max = width;
+                }
             }
         }
         return max;
@@ -215,6 +221,7 @@ public class Canvas {
      * Finds the maximum width of a shape in the specified row in the canvas.
      * @return returns the maximum width.
      */
+
     public int getMaxWidth(int row) {
         int max = 0;
         int width;

@@ -6,15 +6,15 @@ public class RightAngleTriangle extends Shape {
     private int height;
     private int width;
 
+    /**
+     * Constructs a right-angle triangle with the given width and height dimensions.
+     * Allocates and populates the inner character grid to form the triangular
+     *
+     * @param width  the base length of the triangle.
+     * @param height the vertical height of the triangle.
+     * @throws IllegalArgumentException if either the width or height is negative[cite: 85, 93].
+     */
     public RightAngleTriangle(int width, int height) {
-        /**
-         * Constructs a right-angle triangle with the given width and height dimensions.
-         * Allocates and populates the inner character grid to form the triangular
-         *
-         * @param width  the base length of the triangle.
-         * @param height the vertical height of the triangle.
-         * @throws IllegalArgumentException if either the width or height is negative[cite: 85, 93].
-         */
         if (width < 0 || height < 0) {
             throw new IllegalArgumentException("Dimensions cannot be negative");
         }
@@ -28,6 +28,8 @@ public class RightAngleTriangle extends Shape {
             }
         }
 
+        // builds a matrix representation of the triangle shape with given dimensions according to instructions
+        // and constructs a StringBuilder containing that matrix
         for (int i = 0; i < symbol.length; i++) {
             int starsPerLine = Math.max(1, (int) (((double) (i + 1) * width) / height));
             for (int j = 1; j < starsPerLine * 3; j += 3) {
@@ -62,12 +64,12 @@ public class RightAngleTriangle extends Shape {
         return symbol;
     }
 
+    /**
+     * Generates a formatted string representation of the RightAngleTriangle for console rendering,
+     * @return the complete text-based visualization of the RightAngleTriangle.
+     */
     @Override
     public String toString() {
-        /**
-         * Generates a formatted string representation of the RightAngleTriangle for console rendering,
-         * @return the complete text-based visualization of the RightAngleTriangle.
-         */
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < symbol.length; i++) {
             for (int j = 0; j < symbol[i].length; j++) {
@@ -78,5 +80,23 @@ public class RightAngleTriangle extends Shape {
             }
         }
         return sb.toString();
+    }
+
+    /**
+     * Compares this RightAngleTriangle to the specified object.
+     * The result is true if and only if the object passes the base
+     * class checks (is not null and is the exact same class), and has the
+     * exact same width and height as this RightAngleTriangle.
+     *
+     * @param obj the object to compare.
+     * @return true if the given object represents an identical RightAngleTriangle,
+     * false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) return false;
+
+        RightAngleTriangle other = (RightAngleTriangle) obj;
+        return this.width == other.width && this.height == other.height;
     }
 }

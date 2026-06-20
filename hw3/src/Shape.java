@@ -10,10 +10,10 @@ public abstract class Shape {
     public static final char SPACE_SYMBOL = ' ';
     public static final int SPACING_FACTOR = 3;
 
-    //calculate the area of any shape derived from this class
+    // calculate the area of any shape derived from this class
     abstract double area();
 
-    //calculate the perimeter of any shape derived from this class
+    // calculate the perimeter of any shape derived from this class
     abstract double perimeter();
 
     abstract int getWidth();
@@ -25,7 +25,20 @@ public abstract class Shape {
     @Override
     public abstract String toString();
 
-    public boolean equals(Shape other) {
-        return this.getClass() == (other.getClass());
+
+    /**
+     * Compares this Shape to the specified object.
+     * The result is true if and only if identical to the specified object
+     * or the object passes the base class checks (is not null and is the exact same class).
+     *
+     * @param obj the object to compare.
+     * @return true if the given object represents an identical Shape,
+     * false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || this.getClass() != obj.getClass()) return false;
+        return true;
     }
 }

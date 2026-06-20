@@ -17,6 +17,9 @@ public class Circle extends Shape {
                 symbol[i][j] = SPACE_SYMBOL;
             }
         }
+
+        // builds a matrix representation of the circle shape with given radius according to instructions
+        // and constructs a StringBuilder containing that matrix
         for (int i = 0; i < symbol.length; i++) {
             for (int j = 0; j < symbol[0].length; j = j + SPACING_FACTOR) {
                 double d1 = Math.abs(radius - i);
@@ -55,12 +58,30 @@ public class Circle extends Shape {
     }
 
 
+    /*
+     * Generates a formatted string representation of the circle for console rendering,
+     * @return the complete text-based visualization of the circle.
+     */
     @Override
     public String toString() {
-        /*
-         * Generates a formatted string representation of the circle for console rendering,
-         * @return the complete text-based visualization of the circle.
-         */
         return sb.toString().replace('\0', SPACE_SYMBOL);
+    }
+
+    /**
+     * Compares this Circle to the specified object.
+     * The result is true if and only if the object passes the base
+     * class checks (is not null and is the exact same class), and has the
+     * exact same radius as this Circle.
+     *
+     * @param obj the object to compare.
+     * @return true if the given object represents an identical Circle,
+     * false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) return false;
+
+        Circle other = (Circle) obj;
+        return this.radius == other.radius;
     }
 }

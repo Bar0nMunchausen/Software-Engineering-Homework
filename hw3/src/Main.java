@@ -66,13 +66,13 @@ public class Main {
         System.out.println("Total Area: " + canvas.getTotalArea());
         System.out.println("Total Perimeter: " + canvas.getTotalPerimeter());
 
-        Canvas canvas2 = new Canvas(3,3);
-        canvas2.addShape(new Rectangle(2,3),0,0);
-        canvas2.addShape(new Circle(2),1,1);
-        canvas2.addShape(new RightAngleTriangle(4,3),2,2);
+        Canvas canvas2 = new Canvas(3, 3);
+        canvas2.addShape(new Rectangle(2, 3), 0, 0);
+        canvas2.addShape(new Circle(2), 1, 1);
+        canvas2.addShape(new RightAngleTriangle(4, 3), 2, 2);
         System.out.println("canvas equals canvas2: " + canvas.equals(canvas2));
 
-        canvas2.removeShape(1,1);
+        canvas2.removeShape(1, 1);
         System.out.println("canvas equals canvas2 after remove: " + canvas.equals(canvas2));
 
         System.out.println("------------------------------------");

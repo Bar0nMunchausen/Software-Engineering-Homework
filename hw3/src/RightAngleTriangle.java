@@ -1,2 +1,11 @@
-public class RightAngleTriangle {
+public class RightAngleTriangle extends Shape{
+    @Override
+    double area() {
+        return 0;
+    }
+
+    @Override
+    double perimeter() {
+        return 0;
+    }
 }

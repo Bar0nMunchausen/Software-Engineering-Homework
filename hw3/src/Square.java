@@ -6,10 +6,13 @@ public class Square extends Shape {
         sb = new StringBuilder();
         symbol = new char[side][side * 3];
         for (int i = 0; i < symbol.length; i++) {
-            for (int j = 0; j < symbol[0].length; j = j+3) {
+            for (int j = 0; j < symbol[0].length; j++) {
                 symbol[i][j] = ' ';
-                symbol[i][j + 1] = '*';
-                symbol[i][j + 2] = ' ';
+            }
+        }
+        for (int i = 0; i < symbol.length; i++) {
+            for (int j = 0; j < symbol[0].length; j = j+3) {
+                symbol[i][j] = '*';
             }
             sb.append(String.valueOf(symbol[i]));
             sb.append("\n");

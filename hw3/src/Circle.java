@@ -16,7 +16,7 @@ public class Circle extends Shape {
                 double d2 = Math.abs(radius - j / 3);
                 double distance = Math.sqrt(d1*d1 + d2*d2);
                 if (distance <= radius + 0.3) {
-                    symbol[i][j + 1] = '*';
+                    symbol[i][j] = '*';
                 }
             }
             sb.append(String.valueOf(symbol[i]));

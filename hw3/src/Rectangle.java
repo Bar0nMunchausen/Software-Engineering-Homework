@@ -8,8 +8,8 @@ public class Rectangle extends Shape {
         sb = new StringBuilder();
 
         symbol = new char[height][width * 3];
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width * 3; j=j+3) {
+        for (int i = 0; i < symbol.length; i++) {
+            for (int j = 0; j < symbol[0].length; j=j+3) {
                 symbol[i][j] = ' ';
                 symbol[i][j+1] = '*';
                 symbol[i][j+2] = ' ';
@@ -46,6 +46,6 @@ public class Rectangle extends Shape {
 
     @Override
     public String toString() {
-        return sb.toString();
+        return sb.toString().replace('\0', ' ');
     }
 }

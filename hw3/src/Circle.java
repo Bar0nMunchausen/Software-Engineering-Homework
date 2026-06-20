@@ -6,11 +6,11 @@ public class Circle extends Shape {
         sb = new StringBuilder();
         symbol = new char[radius*2][(radius*2)* 3];
 
-        for (int i = 0; i < (2 * radius); i++) {
-            for (int j = 0; j < (2 * radius)*3; j=j+3) {
+        for (int i = 0; i < symbol.length; i++) {
+            for (int j = 0; j < symbol[0].length; j=j+3) {
                 double distance = Math.sqrt((radius - i) * (radius - i) + (radius - j) * (radius - j));
-                symbol[i][j] = ' ';
                 if (distance <= radius + 0.3) {
+                    symbol[i][j] = ' ';
                     symbol[i][j + 1] = '*';
                 } else {
                     symbol[i][j+1] = ' ';
@@ -19,7 +19,6 @@ public class Circle extends Shape {
             }
             sb.append(String.valueOf(symbol[i]));
             sb.append("\n");
-
         }
     }
 
@@ -48,6 +47,6 @@ public class Circle extends Shape {
 
     @Override
     public String toString() {
-        return sb.toString();
+        return sb.toString().replace('\0', ' ');
     }
 }

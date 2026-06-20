@@ -5,8 +5,8 @@ public class Square extends Shape {
         this.side = side;
         sb = new StringBuilder();
         symbol = new char[side][side * 3];
-        for (int i = 0; i < side; i++) {
-            for (int j = 0; j < side*3; j = j+3) {
+        for (int i = 0; i < symbol.length; i++) {
+            for (int j = 0; j < symbol[0].length; j = j+3) {
                 symbol[i][j] = ' ';
                 symbol[i][j + 1] = '*';
                 symbol[i][j + 2] = ' ';
@@ -43,7 +43,7 @@ public class Square extends Shape {
 
     @Override
     public String toString() {
-        return sb.toString();
+        return sb.toString().replace('\0', ' ');
     }
 
 }

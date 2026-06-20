@@ -8,7 +8,7 @@ public class RightAngleTriangle extends Shape {
         sb = new StringBuilder();
 
         symbol = new char[height+1][width * 3];
-        for (int i = 1; i <= height; i++) {
+        for (int i = 1; i < symbol.length; i++) {
             int starsPerLine = Math.max(1, ((int) ((double) i * width / height)));
             for (int j = 0; j < starsPerLine*3; j = j + 3) {
                 symbol[i][j] = ' ';
@@ -48,6 +48,6 @@ public class RightAngleTriangle extends Shape {
 
     @Override
     public String toString() {
-        return sb.toString();
+        return sb.toString().replace('\0', ' ');
     }
 }

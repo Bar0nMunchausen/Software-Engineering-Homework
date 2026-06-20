@@ -49,11 +49,14 @@ public class Canvas {
         if (other == null) return false;
         if (this.width != other.getWidth()) return false;
         if (this.height != other.getHeight()) return false;
-
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
-
-                if ((this.shapes[row][col] != null && other.getShape(row, col) != null) && !this.shapes[row][col].equals(other.getShape(row, col))) {
+                Shape thisShape = this.shapes[row][col];
+                Shape otherShape = other.getShape(row, col);
+                if ((thisShape == null && otherShape != null) || (thisShape != null && otherShape == null)) {
+                    return false;
+                }
+                if (thisShape != null && !thisShape.equals(otherShape)) {
                     return false;
                 }
             }

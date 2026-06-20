@@ -22,7 +22,7 @@ public class RightAngleTriangle extends Shape {
 
     @Override
     double area() {
-        return (height * width) / 2;
+        return (double) (height * width) / 2;
     }
 
     @Override

@@ -9,7 +9,7 @@ public class RightAngleTriangle extends Shape {
 
         symbol = new char[height+1][width * 3];
         for (int i = 0; i < symbol.length; i++) {
-            for (int j = 0; j < symbol[0].length; j++) {
+            for (int j = 0; j < symbol[0].length-1; j++) {
                 symbol[i][j] = ' ';
             }
         }

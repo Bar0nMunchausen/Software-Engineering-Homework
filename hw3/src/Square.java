@@ -6,7 +6,7 @@ public class Square extends Shape {
         sb = new StringBuilder();
         symbol = new char[side][side * 3];
         for (int i = 0; i < symbol.length; i++) {
-            for (int j = 0; j < symbol[0].length; j++) {
+            for (int j = 0; j < symbol[0].length-1; j++) {
                 symbol[i][j] = ' ';
             }
         }

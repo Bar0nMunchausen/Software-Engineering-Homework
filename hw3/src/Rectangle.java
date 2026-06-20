@@ -9,13 +9,13 @@ public class Rectangle extends Shape {
 
         symbol = new char[height][width * 3];
         for (int i = 0; i < symbol.length; i++) {
-            for (int j = 0; j < symbol[0].length-1; j++) {
+            for (int j = 0; j < symbol[0].length; j++) {
                 symbol[i][j] = ' ';
             }
         }
 
         for (int i = 0; i < symbol.length; i++) {
-            for (int j = 0; j < symbol[0].length; j=j+3) {
+            for (int j = 1; j < symbol[0].length; j=j+3) {
                 symbol[i][j] = '*';
             }
             sb.append(String.valueOf(symbol[i]));

@@ -10,7 +10,6 @@ public class Canvas {
         this.width = width;
     }
 
-
     public double getTotalPerimeter() {
         double sum = 0;
         for (int row = 0; row < this.height; row++) {

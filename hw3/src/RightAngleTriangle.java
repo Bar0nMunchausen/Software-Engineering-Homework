@@ -22,12 +22,13 @@ public class RightAngleTriangle extends Shape {
 
     @Override
     double area() {
-        return height * width;
+        return (height * width) / 2;
     }
 
     @Override
     double perimeter() {
-        return 2 * (height + width);
+        double hypotenuse = Math.sqrt((height * height) + (width * width));
+        return (height + width + hypotenuse);
     }
 
     @Override

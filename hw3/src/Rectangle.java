@@ -21,13 +21,12 @@ public class Rectangle extends Shape {
 
     @Override
     double area() {
-        return (height * width) / 2;
+        return height * width;
     }
 
     @Override
     double perimeter() {
-        double hypotenuse = Math.sqrt((height * height) + (width * width));
-        return (height + width + hypotenuse);
+        return 2 * (height + width);
     }
 
     @Override

@@ -57,13 +57,67 @@ public class Canvas {
 
     @Override
     public String toString() {
-        int max_height = 0;
-        for (int row = 0; row < this.height; row++) {
-            max_height = this.getMaxHeight(row);
-            for (int col = 0; col < this.width; col++) {
+        StringBuilder sb = new StringBuilder();
+        char[][] board;
+        int start_x;
+        for (int row = 0; row < this.height; row++){
+            start_x = 0;
+            int height = this.getMaxHeight(row);
+            int width = this.calculateWidthForBoard(row);
+            board = new char[height][width];
+            emptyBoard(board, width, height);
 
+            for (int col = 0; col < this.width; col++){
+                if (this.shapes[row][col] != null){
+                    placeShape(board, this.shapes[row][col].getSymbol(), this.shapes[row][col].getWidth(), this.shapes[row][col].getHeight(), start_x);
+                    start_x += this.shapes[row][col].getWidth() + 3;
+                } else {
+                    start_x += width + 3;
+                }
+            }
+
+            for (int i = 0; i < height; i++){
+                sb.append(String.valueOf(board[i]));
+                sb.append("\n");
             }
         }
+
+        return sb.toString();
+    }
+
+    private void emptyBoard(char[][] board, int width, int height){
+        for (int i = 0; i < width; i++){
+            for (int j = 0; j < height; j++){
+                board[i][j] = ' ';
+            }
+        }
+    }
+
+    private void placeShape(char[][] board, char[][] drawing, int width, int height, int start_x){
+        try{
+            for (int x = 0; x < width; x++){
+                for (int y = 0; y < height; y++){
+                    board[y][x + start_x] = drawing[y][x];
+                }
+            }
+        } catch (Exception e) {
+            return;
+        }
+    }
+
+    private int calculateWidthForBoard(int row){
+        int sum = 0;
+        int maxWidth = getMaxWidth(row);
+        for (int col = 0; col < this.width; col++){
+            if (this.shapes[row][col] != null){
+                sum += this.shapes[row][col].getWidth();
+            } else {
+                sum += maxWidth * 3;
+            }
+        }
+
+        sum += (this.width - 1) * 3;
+        return sum;
     }
 
     public int getHeight() {
@@ -87,17 +141,31 @@ public class Canvas {
                 if (width > max) max = width;
             }
         }
-        return max * 3;
+        return max;
+    }
+
+    public int getMaxWidth(int row){
+        int max = 0;
+        int width;
+        for (int col = 0; col < this.width; col++) {
+            if (this.shapes[row][col] != null) {
+                width = shapes[row][col].getWidth();
+                if (width > max) max = width;
+            }
+        }
+        return max;
     }
 
     public int getMaxHeight(int row) {
         int max = 0;
         int height;
         for (int col = 0; col < this.width; col++) {
-            height = shapes[row][col].getHeight();
-            if (height > max) max = height;
+            if (this.shapes[row][col] != null){
+                height = this.shapes[row][col].getHeight();
+                if (height > max) max = height;
+            }
         }
-        return max * 3;
+        return max;
     }
 
 }

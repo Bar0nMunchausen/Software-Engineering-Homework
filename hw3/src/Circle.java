@@ -4,18 +4,20 @@ public class Circle extends Shape {
     public Circle(int radius) {
         this.radius = radius;
         sb = new StringBuilder();
-        symbol = new char[radius*2][(radius*2)* 3];
-
+        symbol = new char[radius*2 + 1][(radius*2 + 1)* 3];
+        for (int i = 0; i < symbol.length; i++) {
+            for (int j = 0; j < symbol[0].length; j++) {
+                symbol[i][j] = ' ';
+            }
+        }
         for (int i = 0; i < symbol.length; i++) {
             for (int j = 0; j < symbol[0].length; j=j+3) {
-                double distance = Math.sqrt((radius - i) * (radius - i) + (radius - j) * (radius - j));
+                double d1 = Math.abs(radius - i);
+                double d2 = Math.abs(radius - j / 3);
+                double distance = Math.sqrt(d1*d1 + d2*d2);
                 if (distance <= radius + 0.3) {
-                    symbol[i][j] = ' ';
                     symbol[i][j + 1] = '*';
-                } else {
-                    symbol[i][j+1] = ' ';
                 }
-                symbol[i][j + 2] = ' ';
             }
             sb.append(String.valueOf(symbol[i]));
             sb.append("\n");

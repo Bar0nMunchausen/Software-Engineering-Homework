@@ -15,7 +15,9 @@ public class Canvas {
         double sum = 0;
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
-                sum += shapes[row][col].perimeter();
+                if (shapes[row][col] != null){
+                    sum += shapes[row][col].perimeter();
+                }
             }
         }
 
@@ -26,7 +28,9 @@ public class Canvas {
         double sum = 0;
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
-                sum += shapes[row][col].area();
+                if (shapes[row][col] != null){
+                    sum += shapes[row][col].area();
+                }
             }
         }
 
@@ -42,12 +46,14 @@ public class Canvas {
     }
 
     public boolean equals(Canvas other) {
+        if (other == null) return false;
         if (this.width != other.getWidth()) return false;
         if (this.height != other.getHeight()) return false;
 
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
-                if (!this.shapes[row][col].equals(other.getShape(row, col))) {
+
+                if ((this.shapes[row][col] != null && other.getShape(row, col) != null) && !this.shapes[row][col].equals(other.getShape(row, col))) {
                     return false;
                 }
             }
@@ -86,8 +92,8 @@ public class Canvas {
     }
 
     private void emptyBoard(char[][] board, int width, int height){
-        for (int i = 0; i < width; i++){
-            for (int j = 0; j < height; j++){
+        for (int i = 0; i < height; i++){
+            for (int j = 0; j < width; j++){
                 board[i][j] = ' ';
             }
         }

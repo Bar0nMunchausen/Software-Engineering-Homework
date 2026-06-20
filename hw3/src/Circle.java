@@ -1,7 +1,14 @@
+/**
+ * Represents a geometric circle characterized by its radius.
+ * Inherits from the Shape base class and implements its abstract contract.
+ */
 public class Circle extends Shape {
     private int radius;
 
     public Circle(int radius) {
+        if (radius < 0) {
+            throw new IllegalArgumentException("Dimensions cannot be negative");
+        }
         this.radius = radius;
         sb = new StringBuilder();
         symbol = new char[radius * 2 + 1][(radius * 2 + 1) * 3];
@@ -47,8 +54,13 @@ public class Circle extends Shape {
         return symbol;
     }
 
+
     @Override
     public String toString() {
+        /*
+         * Generates a formatted string representation of the circle for console rendering,
+         * @return the complete text-based visualization of the circle.
+         */
         return sb.toString().replace('\0', ' ');
     }
 }

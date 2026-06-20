@@ -1,8 +1,23 @@
+/**
+ * Represents a right angle triangle shape
+ * Inherits from the Shape base class and implements its abstract contract.
+ */
 public class RightAngleTriangle extends Shape {
     private int height;
     private int width;
 
     public RightAngleTriangle(int width, int height) {
+        /**
+         * Constructs a right-angle triangle with the given width and height dimensions.
+         * Allocates and populates the inner character grid to form the triangular
+         *
+         * @param width  the base length of the triangle.
+         * @param height the vertical height of the triangle.
+         * @throws IllegalArgumentException if either the width or height is negative[cite: 85, 93].
+         */
+        if (width < 0 || height < 0) {
+            throw new IllegalArgumentException("Dimensions cannot be negative");
+        }
         this.height = height;
         this.width = width;
 
@@ -49,6 +64,10 @@ public class RightAngleTriangle extends Shape {
 
     @Override
     public String toString() {
+        /**
+         * Generates a formatted string representation of the RightAngleTriangle for console rendering,
+         * @return the complete text-based visualization of the RightAngleTriangle.
+         */
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < symbol.length; i++) {
             for (int j = 0; j < symbol[i].length; j++) {

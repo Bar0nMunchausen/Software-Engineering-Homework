@@ -14,7 +14,7 @@ public class Canvas {
         double sum = 0;
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
-                if (shapes[row][col] != null){
+                if (shapes[row][col] != null) {
                     sum += shapes[row][col].perimeter();
                 }
             }
@@ -27,7 +27,7 @@ public class Canvas {
         double sum = 0;
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
-                if (shapes[row][col] != null){
+                if (shapes[row][col] != null) {
                     sum += shapes[row][col].area();
                 }
             }
@@ -68,7 +68,7 @@ public class Canvas {
         StringBuilder sb = new StringBuilder();
         char[][] board;
         int start_x;
-        for (int row = 0; row < this.height; row++){
+        for (int row = 0; row < this.height; row++) {
             start_x = 0;
             int height = this.getMaxHeight(row);
             int width = this.calculateWidthForBoard(row);
@@ -76,8 +76,8 @@ public class Canvas {
             board = new char[height][width];
             emptyBoard(board, width, height);
 
-            for (int col = 0; col < this.width; col++){
-                if (this.shapes[row][col] != null){
+            for (int col = 0; col < this.width; col++) {
+                if (this.shapes[row][col] != null) {
                     placeShape(board, this.shapes[row][col].getSymbol(), this.shapes[row][col].getWidth() * 3, this.shapes[row][col].getHeight(), start_x);
                     start_x += this.shapes[row][col].getWidth() + 3;
                 } else {
@@ -85,7 +85,7 @@ public class Canvas {
                 }
             }
 
-            for (int i = 0; i < height; i++){
+            for (int i = 0; i < height; i++) {
                 sb.append(String.valueOf(board[i]));
                 sb.append("\n");
             }
@@ -96,27 +96,27 @@ public class Canvas {
         return sb.toString();
     }
 
-    private void emptyBoard(char[][] board, int width, int height){
-        for (int i = 0; i < height; i++){
-            for (int j = 0; j < width; j++){
+    private void emptyBoard(char[][] board, int width, int height) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 board[i][j] = ' ';
             }
         }
     }
 
-    private void placeShape(char[][] board, char[][] drawing, int width, int height, int start_x){
-        for (int x = 0; x < width; x++){
-            for (int y = 0; y < height; y++){
+    private void placeShape(char[][] board, char[][] drawing, int width, int height, int start_x) {
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
                 board[y][x + start_x] = drawing[y][x];
             }
         }
     }
 
-    private int calculateWidthForBoard(int row){
+    private int calculateWidthForBoard(int row) {
         int sum = 0;
         int maxWidth = getMaxWidth(row);
-        for (int col = 0; col < this.width; col++){
-            if (this.shapes[row][col] != null){
+        for (int col = 0; col < this.width; col++) {
+            if (this.shapes[row][col] != null) {
                 sum += this.shapes[row][col].getWidth() * 3;
             } else {
                 sum += maxWidth * 3;
@@ -151,7 +151,7 @@ public class Canvas {
         return max;
     }
 
-    public int getMaxWidth(int row){
+    public int getMaxWidth(int row) {
         int max = 0;
         int width;
         for (int col = 0; col < this.width; col++) {
@@ -167,7 +167,7 @@ public class Canvas {
         int max = 0;
         int height;
         for (int col = 0; col < this.width; col++) {
-            if (this.shapes[row][col] != null){
+            if (this.shapes[row][col] != null) {
                 height = this.shapes[row][col].getHeight();
                 if (height > max) max = height;
             }

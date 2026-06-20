@@ -2,7 +2,7 @@ public class Rectangle extends Shape {
     private int height;
     private int width;
 
-    public Rectangle(int height, int width) {
+    public Rectangle(int width,int height) {
         this.height = height;
         this.width = width;
         sb = new StringBuilder();

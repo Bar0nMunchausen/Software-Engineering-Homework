@@ -2,7 +2,7 @@ public class RightAngleTriangle extends Shape {
     private int height;
     private int width;
 
-    public RightAngleTriangle(int height, int width) {
+    public RightAngleTriangle(int width,int height) {
         this.height = height;
         this.width = width;
         sb = new StringBuilder();

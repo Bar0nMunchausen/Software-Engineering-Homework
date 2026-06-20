@@ -152,6 +152,6 @@ public class Main {
         System.out.println("Canvas Total Area: " + canvas.getTotalArea());
         System.out.println("Canvas Total Perimeter: " + canvas.getTotalPerimeter());
 
-        System.out.println("------------------------------------");
+        System.out.print("------------------------------------");
     }
 }

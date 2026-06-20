@@ -6,6 +6,10 @@ public abstract class Shape {
     protected char[][] symbol; // char array to represent the shape as a char 2D array
     protected StringBuilder sb; //StringBuilder to represent the shape as a string
 
+    public static final char STAR_SYMBOL = '*';
+    public static final char SPACE_SYMBOL = ' ';
+    public static final int SPACING_FACTOR = 3;
+
     //calculate the area of any shape derived from this class
     abstract double area();
 

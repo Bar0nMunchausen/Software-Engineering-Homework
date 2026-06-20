@@ -11,19 +11,19 @@ public class Circle extends Shape {
         }
         this.radius = radius;
         sb = new StringBuilder();
-        symbol = new char[radius * 2 + 1][(radius * 2 + 1) * 3];
+        symbol = new char[radius * 2 + 1][(radius * 2 + 1) * SPACING_FACTOR];
         for (int i = 0; i < symbol.length; i++) {
             for (int j = 0; j < symbol[0].length; j++) {
-                symbol[i][j] = ' ';
+                symbol[i][j] = SPACE_SYMBOL;
             }
         }
         for (int i = 0; i < symbol.length; i++) {
-            for (int j = 0; j < symbol[0].length; j = j + 3) {
+            for (int j = 0; j < symbol[0].length; j = j + SPACING_FACTOR) {
                 double d1 = Math.abs(radius - i);
-                double d2 = Math.abs(radius - j / 3);
+                double d2 = Math.abs(radius - j / SPACING_FACTOR);
                 double distance = Math.sqrt(d1 * d1 + d2 * d2);
                 if (distance <= radius + 0.3) {
-                    symbol[i][j + 1] = '*';
+                    symbol[i][j + 1] = STAR_SYMBOL;
                 }
             }
             sb.append(String.valueOf(symbol[i]));
@@ -61,6 +61,6 @@ public class Circle extends Shape {
          * Generates a formatted string representation of the circle for console rendering,
          * @return the complete text-based visualization of the circle.
          */
-        return sb.toString().replace('\0', ' ');
+        return sb.toString().replace('\0', SPACE_SYMBOL);
     }
 }

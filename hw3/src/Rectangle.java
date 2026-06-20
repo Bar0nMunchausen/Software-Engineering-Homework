@@ -25,13 +25,13 @@ public class Rectangle extends Shape {
         symbol = new char[height][width * 3];
         for (int i = 0; i < symbol.length; i++) {
             for (int j = 0; j < symbol[0].length; j++) {
-                symbol[i][j] = ' ';
+                symbol[i][j] = SPACE_SYMBOL;
             }
         }
 
         for (int i = 0; i < symbol.length; i++) {
             for (int j = 1; j < symbol[0].length; j = j + 3) {
-                symbol[i][j] = '*';
+                symbol[i][j] = STAR_SYMBOL;
             }
             sb.append(String.valueOf(symbol[i]));
             sb.append("\n");
@@ -63,13 +63,13 @@ public class Rectangle extends Shape {
         return symbol;
     }
 
+    /**
+     * Generates a formatted string representation of the Rectangle for console rendering,
+     * @return the complete text-based visualization of the Rectangle.
+     */
     @Override
     public String toString() {
-        /**
-         * Generates a formatted string representation of the Rectangle
-         * @return  text visualization of the Rectangle.
-         */
-        return sb.toString().replace('\0', ' ');
+        return sb.toString().replace('\0', SPACE_SYMBOL);
 
     }
 }

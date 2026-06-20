@@ -16,7 +16,7 @@ public class RightAngleTriangle extends Shape {
         for (int i = 1; i < symbol.length; i++) {
             int starsPerLine = Math.max(1, ((int) ((double) i * width / height)));
             for (int j = 1; j < starsPerLine*3; j = j + 3) {
-                symbol[i][j] = '*';
+                symbol[i-1][j] = '*';
             }
             sb.append(String.valueOf(symbol[i]));
             sb.append("\n");

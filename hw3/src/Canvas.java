@@ -73,15 +73,16 @@ public class Canvas {
             start_x = 0;
             int height = this.getMaxHeight(row);
             int width = this.calculateWidthForBoard(row);
+            int maxWidth = this.getMaxWidth(row);
             board = new char[height][width];
             emptyBoard(board, width, height);
 
             for (int col = 0; col < this.width; col++){
                 if (this.shapes[row][col] != null){
-                    placeShape(board, this.shapes[row][col].getSymbol(), this.shapes[row][col].getWidth(), this.shapes[row][col].getHeight(), start_x);
+                    placeShape(board, this.shapes[row][col].getSymbol(), this.shapes[row][col].getWidth() * 3, this.shapes[row][col].getHeight(), start_x);
                     start_x += this.shapes[row][col].getWidth() + 3;
                 } else {
-                    start_x += width + 3;
+                    start_x += maxWidth + 3;
                 }
             }
 
@@ -89,6 +90,8 @@ public class Canvas {
                 sb.append(String.valueOf(board[i]));
                 sb.append("\n");
             }
+            sb.append("\n");
+            start_x = 0;
         }
 
         return sb.toString();
@@ -103,14 +106,10 @@ public class Canvas {
     }
 
     private void placeShape(char[][] board, char[][] drawing, int width, int height, int start_x){
-        try{
-            for (int x = 0; x < width; x++){
-                for (int y = 0; y < height; y++){
-                    board[y][x + start_x] = drawing[y][x];
-                }
+        for (int x = 0; x < width; x++){
+            for (int y = 0; y < height; y++){
+                board[y][x + start_x] = drawing[y][x];
             }
-        } catch (Exception e) {
-            return;
         }
     }
 
@@ -119,7 +118,7 @@ public class Canvas {
         int maxWidth = getMaxWidth(row);
         for (int col = 0; col < this.width; col++){
             if (this.shapes[row][col] != null){
-                sum += this.shapes[row][col].getWidth();
+                sum += this.shapes[row][col].getWidth() * 3;
             } else {
                 sum += maxWidth * 3;
             }

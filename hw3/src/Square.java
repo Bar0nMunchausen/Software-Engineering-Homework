@@ -1,6 +1,6 @@
 public class Square extends Shape {
-    private double side;
-    public Square(double side){
+    private int side;
+    public Square(int side){
         this.side = side;
     }
     @Override
@@ -14,12 +14,12 @@ public class Square extends Shape {
     }
 
     @Override
-    double getWidth() {
+    int getWidth() {
         return side;
     }
 
     @Override
-    double getHeight() {
+    int getHeight() {
         return side;
     }
 

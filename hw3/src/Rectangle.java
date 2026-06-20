@@ -1,7 +1,7 @@
 public class Rectangle extends Shape{
-    private double height;
-    private double width;
-    public Rectangle(double height, double width){
+    private int height;
+    private int width;
+    public Rectangle(int height, int width){
         this.height = height;
         this.width = width;
     }
@@ -17,12 +17,12 @@ public class Rectangle extends Shape{
     }
 
     @Override
-    double getWidth() {
+    int getWidth() {
         return width;
     }
 
     @Override
-    double getHeight() {
+    int getHeight() {
         return height;
     }
 

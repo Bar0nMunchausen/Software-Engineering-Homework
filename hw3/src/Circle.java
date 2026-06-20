@@ -13,12 +13,12 @@ public class Circle extends Shape{
     }
 
     @Override
-    double getWidth() {
+    int getWidth() {
         return 2*radius;
     }
 
     @Override
-    double getHeight() {
+    int getHeight() {
         return 2*radius;
     }
 

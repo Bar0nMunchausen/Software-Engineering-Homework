@@ -1,8 +1,8 @@
 public class RightAngleTriangle extends Shape{
-    private double height;
-    private double width;
+    private int height;
+    private int width;
 
-    public RightAngleTriangle(double height, double width){
+    public RightAngleTriangle(int height, int width){
         this.height = height;
         this.width = width;
     }
@@ -18,12 +18,12 @@ public class RightAngleTriangle extends Shape{
     }
 
     @Override
-    double getWidth() {
+    int getWidth() {
         return width;
     }
 
     @Override
-    double getHeight() {
+    int getHeight() {
         return height;
     }
 

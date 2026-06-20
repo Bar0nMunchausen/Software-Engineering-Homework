@@ -1,16 +1,29 @@
 public class Square extends Shape {
     private int side;
-    public Square(int side){
+
+    public Square(int side) {
         this.side = side;
+        sb = new StringBuilder();
+        symbol = new char[side][side * 3];
+        for (int i = 0; i < side; i++) {
+            for (int j = 0; j < side*3; j = j+3) {
+                symbol[i][j] = ' ';
+                symbol[i][j + 1] = '*';
+                symbol[i][j + 2] = ' ';
+            }
+            sb.append(String.valueOf(symbol[i]));
+            sb.append("\n");
+        }
     }
+
     @Override
     double area() {
-        return side*side;
+        return side * side;
     }
 
     @Override
     double perimeter() {
-         return side*4;
+        return side * 4;
     }
 
     @Override
@@ -25,12 +38,12 @@ public class Square extends Shape {
 
     @Override
     char[][] getSymbol() {
-        symbol = new char[side][side+2];
-        for(int i=0; i<side; i++){
-            for(int j=0; j<side; j++){
-                symbol[i][j] = (char)i;
-            }
-        }
         return symbol;
     }
+
+    @Override
+    public String toString() {
+        return sb.toString();
+    }
+
 }

@@ -13,7 +13,7 @@ public class Canvas {
 
     public double getTotalPerimeter() {
         double sum = 0;
-        for (int row = 0; row < this.height; row++){
+        for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
                 sum += shapes[row][col].perimeter();
             }
@@ -24,7 +24,7 @@ public class Canvas {
 
     public double getTotalArea() {
         double sum = 0;
-        for (int row = 0; row < this.height; row++){
+        for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
                 sum += shapes[row][col].area();
             }
@@ -41,14 +41,13 @@ public class Canvas {
         this.shapes[row][column] = null;
     }
 
-    @Override
-    public boolean equals(Canvas other){
+    public boolean equals(Canvas other) {
         if (this.width != other.getWidth()) return false;
         if (this.height != other.getHeight()) return false;
 
-        for (int row = 0; row < this.height; row++){
-            for (int col = 0; col < this.width; col++){
-                if (!this.shapes[row][col].equals(other.getShape(row, col))){
+        for (int row = 0; row < this.height; row++) {
+            for (int col = 0; col < this.width; col++) {
+                if (!this.shapes[row][col].equals(other.getShape(row, col))) {
                     return false;
                 }
             }
@@ -57,11 +56,11 @@ public class Canvas {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         int max_height = 0;
-        for (int row = 0; row < this.height; row++){
+        for (int row = 0; row < this.height; row++) {
             max_height = this.getMaxHeight(row);
-            for (int col = 0; col < this.width; col++){
+            for (int col = 0; col < this.width; col++) {
 
             }
         }
@@ -75,14 +74,14 @@ public class Canvas {
         return width;
     }
 
-    public Shape getShape(int row, int col){
+    public Shape getShape(int row, int col) {
         return this.shapes[row][col];
     }
 
-    public int getMaxWidth(){
+    public int getMaxWidth() {
         int max = 0;
         int width;
-        for (int row = 0; row < this.height; row++){
+        for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
                 width = shapes[row][col].getWidth();
                 if (width > max) max = width;
@@ -91,7 +90,7 @@ public class Canvas {
         return max * 3;
     }
 
-    public int getMaxHeight(int row){
+    public int getMaxHeight(int row) {
         int max = 0;
         int height;
         for (int col = 0; col < this.width; col++) {

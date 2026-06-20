@@ -1,11 +1,30 @@
-public class Circle extends Shape{
+public class Circle extends Shape {
     private int radius;
+
     public Circle(int radius) {
         this.radius = radius;
+        sb = new StringBuilder();
+        symbol = new char[radius][radius * 3];
+
+        for (int i = 0; i < 2 * radius; i++) {
+            for (int j = 0; j < (2 * radius)*3; j=j+3) {
+                double distance = Math.sqrt((radius - i) * (radius - i) + (radius - j) * (radius - j));
+                symbol[i][j] = ' ';
+                if (distance <= radius + 0.3) {
+                    symbol[i][j + 1] = '*';
+                } else {
+                    symbol[i][j+1] = ' ';
+                }
+                symbol[i][j + 2] = ' ';
+            }
+            sb.append(String.valueOf(symbol[i]));
+            sb.append("\n");
+
+        }
     }
 
     public double area() {
-        return  Math.PI * (radius * radius);
+        return Math.PI * (radius * radius);
     }
 
     public double perimeter() {
@@ -14,30 +33,21 @@ public class Circle extends Shape{
 
     @Override
     public int getWidth() {
-        return 2*radius;
+        return 2 * radius;
     }
 
     @Override
     public int getHeight() {
-        return 2*radius;
+        return 2 * radius;
     }
 
     @Override
     public char[][] getSymbol() {
-        symbol = new char[radius][radius+2];
-
-        for(int i=0;i<2*radius;i++){
-            for(int j=0;j<2*radius;j++){
-                double distance = Math.sqrt((radius-i)*(radius-i)+(radius-j)*(radius-j));
-                if(distance <= radius + 0.3) {
-                    symbol[i][j] = '*';
-                }else{
-                    symbol[i][j] = ' ';
-                }
-            }
-        }
-        return new char[0][];
+        return symbol;
     }
 
-
+    @Override
+    public String toString() {
+        return sb.toString();
+    }
 }

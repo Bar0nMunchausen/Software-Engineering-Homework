@@ -4,9 +4,9 @@ public class Circle extends Shape {
     public Circle(int radius) {
         this.radius = radius;
         sb = new StringBuilder();
-        symbol = new char[radius][radius * 3];
+        symbol = new char[radius*2][(radius*2)* 3];
 
-        for (int i = 0; i < 2 * radius; i++) {
+        for (int i = 0; i < (2 * radius); i++) {
             for (int j = 0; j < (2 * radius)*3; j=j+3) {
                 double distance = Math.sqrt((radius - i) * (radius - i) + (radius - j) * (radius - j));
                 symbol[i][j] = ' ';

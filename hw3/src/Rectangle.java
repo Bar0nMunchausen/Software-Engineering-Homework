@@ -11,8 +11,8 @@ public class Rectangle extends Shape {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width * 3; j=j+3) {
                 symbol[i][j] = ' ';
-                symbol[i][j] = '*';
-                symbol[i][j] = ' ';
+                symbol[i][j+1] = '*';
+                symbol[i][j+2] = ' ';
             }
             sb.append(String.valueOf(symbol[i]));
             sb.append("\n");

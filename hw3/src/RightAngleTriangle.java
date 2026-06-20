@@ -7,7 +7,7 @@ public class RightAngleTriangle extends Shape {
         this.width = width;
         sb = new StringBuilder();
 
-        symbol = new char[height][width * 3];
+        symbol = new char[height+1][width * 3];
         for (int i = 1; i <= height; i++) {
             int starsPerLine = Math.max(1, ((int) ((double) i * width / height)));
             for (int j = 0; j < starsPerLine*3; j = j + 3) {

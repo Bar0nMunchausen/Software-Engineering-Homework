@@ -66,8 +66,8 @@ public class Rectangle extends Shape {
     @Override
     public String toString() {
         /**
-         * Generates a formatted string representation of the Rectangle for console rendering,
-         * @return the complete text-based visualization of the Rectangle.
+         * Generates a formatted string representation of the Rectangle
+         * @return  text visualization of the Rectangle.
          */
         return sb.toString().replace('\0', ' ');
 

@@ -28,8 +28,16 @@ public class RightAngleTriangle extends Shape{
     }
 
     @Override
-    public String toString(){
-
-        return null;
+    char[][] getSymbol() {
+        symbol = new char[height][width+2];
+        for(int i = 1; i <= height; i++){
+            int starsPerLine = Math.max(1, ((int) ((double) i * width / height)));
+            for(int j = 0; j < starsPerLine; j=j+3){
+                symbol[i][j] = ' ';
+                symbol[i][j] = '*';
+                symbol[i][j+1] = ' ';
+            }
+        }
+        return symbol;
     }
 }

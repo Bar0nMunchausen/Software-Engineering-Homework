@@ -24,8 +24,13 @@ public class Square extends Shape {
     }
 
     @Override
-    public String toString(){
-
-        return null;
+    char[][] getSymbol() {
+        symbol = new char[side][side+2];
+        for(int i=0; i<side; i++){
+            for(int j=0; j<side; j++){
+                symbol[i][j] = (char)i;
+            }
+        }
+        return symbol;
     }
 }

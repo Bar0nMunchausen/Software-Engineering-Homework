@@ -11,9 +11,9 @@ public class Rectangle extends Shape{
     }
 
     @Override
-        double perimeter() {
-            double hypotenuse =  Math.sqrt((height*height) + (width*width));
-            return (height + width + hypotenuse);
+    double perimeter() {
+        double hypotenuse =  Math.sqrt((height*height) + (width*width));
+        return (height + width + hypotenuse);
     }
 
     @Override
@@ -27,8 +27,15 @@ public class Rectangle extends Shape{
     }
 
     @Override
-    public String toString(){
-
-        return null;
+    char[][] getSymbol() {
+        symbol = new char[height][width+2];
+        for(int i = 0; i < height; i++){
+            for(int j = 0; j < width+2; j++){
+                symbol[i][j] = ' ';
+                symbol[i][j] = '*';
+                symbol[i][j] = ' ';
+            }
+        }
+        return new char[0][];
     }
 }

@@ -1,8 +1,8 @@
 public abstract class Shape {
-    //private int height; add later?
-    //private int width;
+    protected char[][] symbol;
     abstract double area();
     abstract double perimeter();
     abstract int getWidth();
     abstract int getHeight();
+    abstract char[][] getSymbol();
 }

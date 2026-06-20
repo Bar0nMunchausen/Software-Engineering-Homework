@@ -22,7 +22,9 @@ public class Canvas {
 
     }
 
-    public void toString(){
+    @Override
+    public String toString(){
 
+        return null;
     }
 }

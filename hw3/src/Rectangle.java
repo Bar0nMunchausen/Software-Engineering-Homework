@@ -22,7 +22,7 @@ public class Rectangle extends Shape {
         this.width = width;
         sb = new StringBuilder();
 
-        symbol = new char[height][width * 3];
+        symbol = new char[height][width * SPACING_FACTOR];
         for (int i = 0; i < symbol.length; i++) {
             for (int j = 0; j < symbol[0].length; j++) {
                 symbol[i][j] = SPACE_SYMBOL;
@@ -72,7 +72,6 @@ public class Rectangle extends Shape {
     @Override
     public String toString() {
         return sb.toString().replace('\0', SPACE_SYMBOL);
-
     }
 
     /**
@@ -87,9 +86,7 @@ public class Rectangle extends Shape {
      */
     @Override
     public boolean equals(Object obj) {
-        if (!super.equals(obj)) return false;
-
-        Rectangle other = (Rectangle) obj;
+        if (!(obj instanceof Rectangle other)) return false;
         return this.width == other.width && this.height == other.height;
     }
 }

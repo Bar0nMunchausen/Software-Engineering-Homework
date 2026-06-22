@@ -21,7 +21,7 @@ public class RightAngleTriangle extends Shape {
         this.height = height;
         this.width = width;
 
-        this.symbol = new char[height][width * 3];
+        this.symbol = new char[height][width * SPACING_FACTOR];
         for (int i = 0; i < symbol.length; i++) {
             for (int j = 0; j < symbol[0].length; j++) {
                 symbol[i][j] = SPACE_SYMBOL;
@@ -32,7 +32,7 @@ public class RightAngleTriangle extends Shape {
         // and constructs a StringBuilder containing that matrix
         for (int i = 0; i < symbol.length; i++) {
             int starsPerLine = Math.max(1, (int) (((double) (i + 1) * width) / height));
-            for (int j = 1; j < starsPerLine * 3; j += 3) {
+            for (int j = 1; j < starsPerLine * SPACING_FACTOR; j += 3) {
                 symbol[i][j] = STAR_SYMBOL;
             }
         }
@@ -71,13 +71,11 @@ public class RightAngleTriangle extends Shape {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < symbol.length; i++) {
-            for (int j = 0; j < symbol[i].length; j++) {
-                sb.append(symbol[i][j]);
+        for (char[] chars : symbol) {
+            for (char aChar : chars) {
+                sb.append(aChar);
             }
-            if (i < symbol.length) {
-                sb.append('\n');
-            }
+            sb.append('\n');
         }
         return sb.toString();
     }

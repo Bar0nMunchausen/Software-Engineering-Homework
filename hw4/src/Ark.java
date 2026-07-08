@@ -6,5 +6,6 @@ public class Ark {
     }
 
     public void add(Tiger tiger) {
+
     }
 }

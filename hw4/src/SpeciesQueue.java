@@ -6,5 +6,6 @@ public class SpeciesQueue {
     }
 
     public boolean isEmpty() {
+        return false;
     }
 }

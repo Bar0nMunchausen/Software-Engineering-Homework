@@ -119,8 +119,9 @@ public class SpeciesQueue <T extends Animal & Cloneable> implements Iterable<T>,
     }
 
     public void emptify(){
-        this.array = new Object[CAPACITY];
-        this.currentSize = 0;
+        while(!isEmpty()){
+            remove();
+        }
     }
 
     /**

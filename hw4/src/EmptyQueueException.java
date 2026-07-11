@@ -1,4 +1,7 @@
 public class EmptyQueueException extends SpeciesQueueException {
+    /**
+     * Thrown when tring to access or remove an element from empty queue.
+     */
     public EmptyQueueException() {
         super();
     }

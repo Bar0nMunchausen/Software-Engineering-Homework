@@ -1,6 +1,6 @@
 import java.util.Iterator;
 
-public class SpeciesQueue <T extends Animal & Cloneable> implements Iterable<T>{
+public class SpeciesQueue <T extends Animal & Cloneable> implements Iterable<T>,Cloneable{
 
     private Object[] array;
     private int currentSize;

@@ -1,7 +1,7 @@
 import java.util.Iterator;
 
 public class SpeciesQueue <T extends Animal & Comparable<T> & Cloneable>
-        implements Iterable<T>,Comparable{
+        implements Iterable<T>, Comparable{
 
     private Object[] array;
     private int currentSize;
@@ -22,9 +22,16 @@ public class SpeciesQueue <T extends Animal & Comparable<T> & Cloneable>
 
         currentSize++;
     }
-    public void remove() {
-
+    public Object remove() {
+        if (currentSize == 0){
+            throw new EmptyQueueException();
+        }
+        Object returnObj = this.array[0];
+        for (int i = 1; i < currentSize; i++){
+            array[i - 1] = array[i];
+        }
         currentSize--;
+        return returnObj;
     }
     private void resize() {
         Object[] newArray = new Object[this.array.length * 2];
@@ -33,16 +40,18 @@ public class SpeciesQueue <T extends Animal & Comparable<T> & Cloneable>
     }
 
     public Object peek() {
-        if(this.currentSize == 0){
+        if (this.currentSize == 0){
             throw new EmptyQueueException();
         }
-        return array[this.currentSize - 1];
+        return array[0];
     }
+
     public int size() {
         return this.currentSize;
     }
+
     public boolean isEmpty() {
-        return (this.currentSize > 0);
+        return !(this.currentSize > 0);
     }
 
     @Override

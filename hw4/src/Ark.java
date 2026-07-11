@@ -21,13 +21,14 @@ public class Ark {
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        boolean flag = true;
         SpeciesQueue<Animal> queueCopy = this.queue.clone();
         while (!queueCopy.isEmpty()){
-            if (!flag){
-                sb.append(" ,");
-            }
             sb.append(queueCopy.remove());
+            sb.append(" ,");
+        }
+        if (sb.length() > 0) {
+            sb.deleteCharAt(sb.length() - 1);
+            sb.deleteCharAt(sb.length() - 1);
         }
         return sb.toString();
     }

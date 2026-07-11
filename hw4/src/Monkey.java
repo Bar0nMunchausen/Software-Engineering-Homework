@@ -1,5 +1,5 @@
 public class Monkey extends Animal {
     public Monkey(){
-        super(3);
+        super(MONKEY_DOMINANCE);
     }
 }

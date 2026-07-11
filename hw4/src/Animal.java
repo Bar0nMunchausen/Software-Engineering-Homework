@@ -2,7 +2,12 @@ public abstract class Animal implements Comparable<Animal>, Cloneable {
     /**
      * Abstract base class representing an animal
      */
-    private int dominance;
+    private final int dominance;
+    public final static int LION_DOMINANCE = 4;
+    public final static int TIGER_DOMINANCE = 4;
+    public final static int MONKEY_DOMINANCE = 3;
+    public final static int SNAKE_DOMINANCE = 2;
+    public final static int ZEBRA_DOMINANCE = 1;
 
     /**
      * Initializes the animal with a specific dominance level.

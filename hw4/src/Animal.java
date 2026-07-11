@@ -9,4 +9,9 @@ public class Animal implements Comparable<Animal>, Cloneable {
     public int compareTo(Animal other){
         return this.dominance - other.dominance;
     }
+
+    public Animal clone() throws CloneNotSupportedException {
+        Animal animal = (Animal) super.clone();
+        return animal;
+    }
 }

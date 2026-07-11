@@ -1,11 +1,11 @@
 import java.util.Iterator;
 
 public class SpeciesQueue <T extends Animal & Comparable<T> & Cloneable>
-        implements Iterable<T>, Comparable {
+        implements Iterable<T>, Comparable{
 
     private Object[] array;
     private int currentSize;
-    private static int CAPACITY = 10;
+    private static final int CAPACITY = 10;
 
     public SpeciesQueue() {
         this.array = new Object[CAPACITY];
@@ -34,10 +34,9 @@ public class SpeciesQueue <T extends Animal & Comparable<T> & Cloneable>
         return returnObj;
     }
     private void resize() {
-        Object[] newArray = new Object[CAPACITY * 2];
-        System.arraycopy(this.array, 0, newArray, 0, CAPACITY); //?
+        Object[] newArray = new Object[this.array.length * 2];
+        System.arraycopy(this.array, 0, newArray, 0, this.array.length); //?
         this.array = newArray;
-        CAPACITY *= 2;
     }
 
     public Object peek() {
@@ -57,7 +56,7 @@ public class SpeciesQueue <T extends Animal & Comparable<T> & Cloneable>
 
     @Override
     public Iterator<T> iterator() {
-        return new QueueIterator();
+        return null;
     }
 
     @Override
@@ -78,28 +77,6 @@ public class SpeciesQueue <T extends Animal & Comparable<T> & Cloneable>
             return clone;
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
-        }
-    }
-
-    public class QueueIterator implements Iterator<T> {
-        private int cursor = 0;
-
-        @Override
-        public boolean hasNext(){
-            return cursor < currentSize;
-        }
-
-        @Override
-        public T next(){
-            if (!hasNext()){
-                throw new EmptyQueueException();
-            }
-            return (T) array[cursor++];
-        }
-
-        @Override
-        public void remove() {
-            throw new InvalidInputException();
         }
     }
 }

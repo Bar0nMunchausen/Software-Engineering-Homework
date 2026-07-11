@@ -60,6 +60,7 @@ public class SpeciesQueue <T extends Animal & Cloneable> implements Iterable<T>,
             array[i - 1] = array[i];
         }
         currentSize--;
+        this.array[currentSize] = null;
         return (T) returnObj;
     }
 

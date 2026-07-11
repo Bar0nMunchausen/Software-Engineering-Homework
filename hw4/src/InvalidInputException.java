@@ -1,4 +1,8 @@
 public class InvalidInputException extends SpeciesQueueException {
+    /**
+     * Thrown when invalid input (such as null) is passed to a queue operation.
+     */
+
     public InvalidInputException() {
         super();
     }

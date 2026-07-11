@@ -12,7 +12,6 @@ public class SpeciesQueue <T extends Animal & Comparable<T> & Cloneable>
         this.currentSize = 0;
     }
 
-
     public void add(T element) {
         if(element == null){
             throw new InvalidInputException();
@@ -33,8 +32,11 @@ public class SpeciesQueue <T extends Animal & Comparable<T> & Cloneable>
         this.array = newArray;
     }
 
-    public void peek() {
-        if(this.currentSize == 0){}
+    public Object peek() {
+        if(this.currentSize == 0){
+            throw new EmptyQueueException();
+        }
+        return array[this.currentSize - 1];
     }
     public int size() {
         return this.currentSize;
@@ -51,6 +53,11 @@ public class SpeciesQueue <T extends Animal & Comparable<T> & Cloneable>
     @Override
     public int compareTo(Object o) {
         return 0;
+    }
+
+    public void emptify(){
+        this.array = new Object[CAPACITY];
+        this.currentSize = 0;
     }
 
     @Override

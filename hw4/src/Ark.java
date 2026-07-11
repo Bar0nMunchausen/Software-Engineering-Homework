@@ -6,9 +6,13 @@ public class Ark {
         this.queue = new SpeciesQueue<Animal>();
     }
 
+    public void enterToArk() {
+        System.out.println("A " + this.queue.remove() + " entered the ark");
+    }
+
     public void enterAllToArk() {
         while(!this.queue.isEmpty()){
-            System.out.println("A " + this.queue.remove() + " entered the ark");
+            enterToArk();
         }
     }
 

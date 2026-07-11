@@ -1,5 +1,5 @@
 public class Lion extends Animal {
-    public  Lion(){
+    public Lion(){
         super(4);
     }
 }

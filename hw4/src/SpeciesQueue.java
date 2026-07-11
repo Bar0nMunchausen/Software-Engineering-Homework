@@ -1,28 +1,57 @@
 import java.util.Iterator;
 
-public class SpeciesQueue <T extends Animal & Comparable<T> & Cloneable>
-        implements Iterable<T>, Comparable{
+public class SpeciesQueue <T extends Animal & Cloneable> implements Iterable<T>{
 
     private Object[] array;
     private int currentSize;
     private static final int CAPACITY = 10;
 
+    /**
+     * init of empty queue with capacity of 10.
+     */
     public SpeciesQueue() {
         this.array = new Object[CAPACITY];
         this.currentSize = 0;
     }
-
+    /**
+     * Adds an element based on its priority.
+     * @param element The animal to add.
+     * @throws InvalidInputException if the element is null.
+     */
     public void add(T element) {
-        if(element == null){
-            throw new InvalidInputException();
+        if (element == null) {
+            throw new InvalidInputException("Species queue element cannot be null");
         }
+
         if (this.currentSize == this.array.length) {
             resize();
         }
 
-        currentSize++;
+        int insertIndex = 0;
+        while (insertIndex < this.currentSize) {
+            T current = (T) this.array[insertIndex];
+            if (element.compareTo(current) > 0) {
+                break;
+            }
+            if (element.compareTo(current) == 0 && element.getClass() == current.getClass()) {
+                break;
+            }
+            insertIndex++;
+        }
+
+        for (int i = this.currentSize; i > insertIndex; i--) {
+            this.array[i] = this.array[i - 1];
+        }
+
+        this.array[insertIndex] = element;
+        this.currentSize++;
     }
-    public Object remove() {
+    /**
+     * Removes and returns the animal at the front of the queue.
+     * @return The front animal.
+     * @throws EmptyQueueException If the queue is empty.
+     */
+    public T remove() {
         if (currentSize == 0){
             throw new EmptyQueueException();
         }
@@ -31,37 +60,62 @@ public class SpeciesQueue <T extends Animal & Comparable<T> & Cloneable>
             array[i - 1] = array[i];
         }
         currentSize--;
-        return returnObj;
+        return (T) returnObj;
     }
+
+    /**
+     * Doubles the size of the array when it runs out of space.
+     */
     private void resize() {
         Object[] newArray = new Object[this.array.length * 2];
         System.arraycopy(this.array, 0, newArray, 0, this.array.length); //?
         this.array = newArray;
     }
 
-    public Object peek() {
+    /**
+     * Returns the animal at the front without removing it.
+     * @return The front animal.
+     * @throws EmptyQueueException If the queue is empty.
+     */
+    public T peek() {
         if (this.currentSize == 0){
             throw new EmptyQueueException();
         }
-        return array[0];
+        return (T) array[0];
     }
 
+    /**
+     * @return the number of animals currently in the queue.
+     */
     public int size() {
         return this.currentSize;
     }
 
+    /**
+     * @return if the queue is empty.
+     */
     public boolean isEmpty() {
         return !(this.currentSize > 0);
     }
 
+    /**
+     * Returns an iterator to loop through the queue from start to end.
+     */
     @Override
     public Iterator<T> iterator() {
-        return null;
-    }
+        return new Iterator<T>() {
+            private int index = 0;
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
+            @Override
+            public boolean hasNext() {
+                return index < currentSize;
+            }
+
+            @Override
+            public T next() {
+                return (T) array[index++];
+            }
+        };
     }
 
     public void emptify(){
@@ -69,14 +123,26 @@ public class SpeciesQueue <T extends Animal & Comparable<T> & Cloneable>
         this.currentSize = 0;
     }
 
+    /**
+     * Creates a deep copy of the queue using reflection.
+     * Returns null if the cloning fails, without throwing exceptions.
+     */
     @Override
-    public SpeciesQueue clone() {
+    @SuppressWarnings("unchecked")
+    public SpeciesQueue<T> clone() {
         try {
-            SpeciesQueue clone = (SpeciesQueue) super.clone();
-            // TODO: copy mutable state here, so the clone can't change the internals of the original
-            return clone;
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
+            SpeciesQueue<T> clonedQueue = (SpeciesQueue<T>) super.clone();
+            clonedQueue.array = new Object[this.array.length];
+
+            for (int i = 0; i < this.currentSize; i++) {
+                if (this.array[i] != null) {
+                    java.lang.reflect.Method cloneMethod = this.array[i].getClass().getMethod("clone");
+                    clonedQueue.array[i] = cloneMethod.invoke(this.array[i]);
+                }
+            }
+            return clonedQueue;
+        } catch (Exception e) {
+            return null;
         }
     }
 }

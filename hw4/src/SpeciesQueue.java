@@ -118,11 +118,6 @@ public class SpeciesQueue <T extends Animal & Cloneable> implements Iterable<T>,
         };
     }
 
-    public void emptify(){
-        while(!isEmpty()){
-            remove();
-        }
-    }
 
     /**
      * Creates a deep copy of the queue using reflection.

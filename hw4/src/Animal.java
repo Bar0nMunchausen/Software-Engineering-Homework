@@ -14,4 +14,8 @@ public class Animal implements Comparable<Animal>, Cloneable {
         Animal animal = (Animal) super.clone();
         return animal;
     }
+
+    public String toString(){
+        return this.getClass().getName();
+    }
 }

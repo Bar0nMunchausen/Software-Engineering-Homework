@@ -7,7 +7,9 @@ public class Ark {
     }
 
     public void enterAllToArk() {
-        this.queue.emptify();
+        while(!this.queue.isEmpty()){
+            System.out.println("A " + this.queue.remove() + " entered the ark");
+        }
     }
 
     public void showQueue() {
@@ -25,7 +27,7 @@ public class Ark {
         SpeciesQueue<Animal> queueCopy = this.queue.clone();
         while (!queueCopy.isEmpty()){
             sb.append(queueCopy.remove());
-            sb.append(" ,");
+            sb.append(", ");
         }
         if (sb.length() > 0) {
             sb.deleteCharAt(sb.length() - 1);

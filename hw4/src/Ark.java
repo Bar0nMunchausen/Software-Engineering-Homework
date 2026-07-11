@@ -20,6 +20,7 @@ public class Ark {
 
     @Override
     public String toString(){
+        if (this.queue == null) return "";
         StringBuilder sb = new StringBuilder();
         SpeciesQueue<Animal> queueCopy = this.queue.clone();
         while (!queueCopy.isEmpty()){
